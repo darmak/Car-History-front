@@ -1,5 +1,5 @@
 import React from 'react';
-import './assets/styles/index.less';
+import './assets/styles/index.scss';
 import Router from './router/index.js';
 import PageHeader from './components/PageHeader/index.js';
 import { Layout } from 'antd';
