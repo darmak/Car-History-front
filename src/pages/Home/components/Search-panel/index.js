@@ -22,14 +22,4 @@ const SearchPanel = () => {
   )
 }
 
-{/* <div className="search-panel">
-<div className="search-panel-title">
-    <h2>Get car history by VIN</h2>
-</div>
-<div className="search-panel-place">
-    <input className="search-input" type="text" placeholder='4F2YU08102KM26251'/>
-    <button className="search-button">Check car</button>
-</div>
-</div>  */}
-
 export default SearchPanel;

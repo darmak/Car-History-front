@@ -1,10 +1,8 @@
 import React from "react";
 import {
-  BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
-import { render } from "react-dom";
 import Home from '../pages/Home/index.js';
 
 

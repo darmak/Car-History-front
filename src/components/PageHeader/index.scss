@@ -6,10 +6,10 @@ body {
 }
 .header {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     align-items: center;
     &-logo {
-        padding: 0em 0em 0em 6em;
+        // padding: 0em 0em 0em 6em;
         display: flex;
         align-content: center;
         &__history {
@@ -20,10 +20,9 @@ body {
 
 
 .logo-imgs {
-    height: 5em;
+    height: 40px;
 }
-.menu-tac {
-    display: flex;
+.menu {
     justify-content: center;
     align-items: center;
 }

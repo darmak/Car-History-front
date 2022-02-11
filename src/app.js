@@ -9,7 +9,7 @@ const { Header, Content } = Layout;
 const App = () => {
     return (
       <BrowserRouter>
-        <Layout>
+        <Layout className='wrapper' >
           <Header className='page-header'>
             <PageHeader/>
           </Header>
