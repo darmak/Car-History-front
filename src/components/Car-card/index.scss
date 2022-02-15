@@ -9,7 +9,11 @@
         display: flex;
     }
     &-description {
+        display: flex;
         margin-left: 30px;
+        &-col {
+            margin-left: 80px;
+        }
         .car-counter {
             margin-left: 10px;
             margin-right: 5px;

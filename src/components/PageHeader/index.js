@@ -19,13 +19,10 @@ const PageHeader = () => {
                 </Link>
             </Col>
             <Col span={8} offset={2}>
-                {/* defaultSelectedKeys={['1']} */}
-            <Menu className='menu' theme="light" mode="horizontal"> 
-                <Link to="/garage" className="nav-link">
-                    <Menu.Item key="1">Garage</Menu.Item>
-                </Link>
-                <Menu.Item key="2">nav 2</Menu.Item>
-                <Menu.Item key="3">nav 3</Menu.Item>
+            <Menu className='menu' theme="light" mode="horizontal" defaultSelectedKeys={['1']}> 
+                <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
+                <Menu.Item key="2"><Link to="/garage">Garage</Link></Menu.Item>
+                <Menu.Item key="3"><Link to="/about-us">About Us</Link></Menu.Item>
             </Menu>
             </Col>
             <Col className="btns-wrapper" span={6} offset={2}>

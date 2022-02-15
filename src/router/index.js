@@ -8,6 +8,7 @@ import CarHistory from "../pages/CarHistory/index.js";
 import Registration from "../pages/Registration/index.js";
 import Authorization from "../pages/Authorization/index.js";
 import Garage from "../pages/Garage/index.js";
+import AboutUs from "../pages/AboutUs/index.js";
 
 
 const Router = () => {
@@ -18,6 +19,7 @@ const Router = () => {
             <Route path="/registration" element={<Registration/>}/>
             <Route path="/authorization" element={<Authorization/>}/>
             <Route path="/garage" element={<Garage/>}/>
+            <Route path="/about-us" element={<AboutUs/>}/>
         </Routes>
     )
 }

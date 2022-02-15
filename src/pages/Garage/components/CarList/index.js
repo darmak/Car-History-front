@@ -1,5 +1,5 @@
 import React from 'react';
-import CarCard from '../../../Home/components/Car-card';
+import CarCard from '../../../../components/Car-card';
 
 const CarList = () => {
     return (
