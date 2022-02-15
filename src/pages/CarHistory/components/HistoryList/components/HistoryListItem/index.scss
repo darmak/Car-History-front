@@ -1,0 +1,16 @@
+.history-list {
+    &-item-wrapper {
+        margin-top: 30px;
+    }
+    &-item {
+        display: flex;
+        justify-content: space-between;
+    }
+    &-item-info {
+        display: flex;
+        align-items: flex-end;
+    }
+    &-item-data {
+        margin-top: 40px;
+    }
+}

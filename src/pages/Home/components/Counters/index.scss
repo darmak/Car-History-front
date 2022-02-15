@@ -1,0 +1,28 @@
+@import "../../../../assets/styles/index.scss";
+
+.counters-wrapper {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 100px 400px 0;
+    font-family: $title-font;
+}
+
+.car-counts {
+    display: flex;
+    align-items: center;
+    .count-description {
+        margin: 0;
+    }
+}
+
+.count-value-wrapper {
+    margin-left: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    .count-value {
+        padding: 20px;
+        margin: 0;
+    }
+}
