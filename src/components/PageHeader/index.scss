@@ -1,15 +1,13 @@
-$title-font:'PT Sans', sans-serif;
-$simpleText-font:'Alegreya Sans SC', sans-serif;
+@import "../../assets/styles/index.scss";
+
 body {
     font-size: 10px;
     font-family: $simpleText-font;
 }
 .header {
     display: flex;
-    // justify-content: space-between;
     align-items: center;
     &-logo {
-        // padding: 0em 0em 0em 6em;
         display: flex;
         align-content: center;
         &__history {
@@ -25,4 +23,20 @@ body {
 .menu {
     justify-content: center;
     align-items: center;
+    font-family: $simpleText-font;
+    .nav-link {
+        color: black;
+    }
 }
+.btn-sign_up {
+    margin-left: 20px;
+}
+.btns-wrapper {
+    .wrapper {
+        height: 100%;  
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}
+
