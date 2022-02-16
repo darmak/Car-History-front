@@ -3,15 +3,15 @@ import "./index.scss";
 import { Typography, Row, Col } from 'antd';
 const { Title } = Typography;
 
-const GarageTitle= () => {
+const PageTitle = ({titleText}) => {
 
     return (
-      <Row className="garage-title">
+      <Row className="title">
           <Col span={8} offset={8}>
-            <Title>Garage</Title>
+            <Title>{titleText}</Title>
           </Col>
       </Row>
   )
 }
 
-export default GarageTitle;
+export default PageTitle;

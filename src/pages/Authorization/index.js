@@ -1,11 +1,11 @@
 import React from 'react';
-import AuthorizationTitle from './components/AuthorizationTitle';
+import PageTitle from '../../components/Title';
 import AuthorizationForm from './components/AuthorizationForm';
 
 const Authorization= () => {
     return (
         <>
-            <AuthorizationTitle/>
+            <PageTitle titleText="Sign In"/>
             <AuthorizationForm/>
         </>
   )

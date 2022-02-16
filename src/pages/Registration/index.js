@@ -1,11 +1,11 @@
 import React from 'react';
+import PageTitle from '../../components/Title';
 import RegistrationForm from './components/RegistrationForm';
-import RegistrationTitle from './components/RegistrationTitle';
 
 const Registration= () => {
     return (
         <>
-            <RegistrationTitle/>
+            <PageTitle titleText="Sign Up"/>
             <RegistrationForm/>
         </>
   )

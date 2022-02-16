@@ -1,11 +1,11 @@
 import React from 'react';
-import GarageTitle from './components/GarageTitle';
+import PageTitle from '../../components/Title';
 import CarList from './components/CarList';
 
 const Garage = () => {
     return (
         <>
-            <GarageTitle/>
+            <PageTitle titleText="Garage"/>
             <CarList/>
         </>
   )

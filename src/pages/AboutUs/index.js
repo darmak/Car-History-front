@@ -1,10 +1,11 @@
 import React from 'react';
-import AboutUsTitle from './components/AboutUsTitle';
+import PageTitle from '../../components/Title';
+
 
 const AboutUs= () => {
     return (
         <>
-            <AboutUsTitle/>
+            <PageTitle titleText="About Us"/>
         </>
   )
 }
