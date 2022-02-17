@@ -13,8 +13,8 @@ const ModalWin= ({active, setActive}) => {
       };
 
     return (
-    <div className="modal">
-        <div className="modal-dialog">
+    <div className={active ? "modal show" : "modal"} onClick={() => setActive(false)}>
+        <div className="modal-dialog" onClick={e => e.stopPropagation()}>
             <div className="modal-content">
                 <div className="modal-title">
                     <Title level={1}>Add new car</Title>
