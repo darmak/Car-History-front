@@ -17,8 +17,7 @@ const RegistrationForm= () => {
         <Col className="registration-form">
           <Form
             name="basic"
-            labelCol={{ span: 10 }}
-            wrapperCol={{ span: 14 }}
+            layout="vertical"
             autoComplete="off"
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
@@ -29,7 +28,7 @@ const RegistrationForm= () => {
               name="login"
               rules={[{ required: true, message: 'Please input your username!' }]}
             >
-              <Input placeholder="Enter username" />
+              <Input size="large" placeholder="Enter username" />
             </Form.Item>
 
             <Form.Item
@@ -37,7 +36,7 @@ const RegistrationForm= () => {
               name="email"
               rules={[{ required: true, message: 'Please input your email!' }]}
             >
-              <Input placeholder="Enter email"/>
+              <Input size="large" placeholder="Enter email"/>
             </Form.Item>
 
             <Form.Item
@@ -45,7 +44,7 @@ const RegistrationForm= () => {
               name="password"
               rules={[{ required: true, message: 'Please input your password!' }]}
             >
-              <Input placeholder="Enter password"/>
+              <Input size="large" placeholder="Enter password"/>
             </Form.Item>
 
             <Form.Item
@@ -53,11 +52,11 @@ const RegistrationForm= () => {
               name="rePassword"
               rules={[{ required: true, message: 'Please input your password!' }]}
             >
-              <Input placeholder="Repeat password"/>
+              <Input size="large" placeholder="Repeat password"/>
             </Form.Item>
 
-            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-              <Button type="primary" htmlType="submit">
+            <Form.Item>
+              <Button size="large" type="primary" htmlType="submit">
                 Sign Up
               </Button>
             </Form.Item>

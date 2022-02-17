@@ -9,7 +9,7 @@
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.5);
     &-dialog {
-      max-width: 450px;
+      max-width: 650px;
       margin: 200px auto;
     }
     &-content {
@@ -20,17 +20,24 @@
       border-radius: 5px;
     }
     &-title {
+      margin-top: 20px;
       text-align: center;
       border-bottom: 2px solid rgba(218, 218, 218, 0.501);
     }
     &-form {
       display: flex;
       justify-content: center;
-      margin-top: 30px;
+      padding: 30px;
+      text-align: center;
+
     }
   }
 
 .show {
   display: block;
 } 
+
+.form {
+  width: 100%;
+}
   
