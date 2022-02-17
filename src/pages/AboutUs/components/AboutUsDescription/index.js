@@ -1,7 +1,6 @@
 import React from 'react';
 import './index.scss';
 import { Row, Col, Typography } from 'antd';
-import { Link } from 'react-router-dom';
 const { Title, Text } = Typography;
 
 const AboutUsDescription= () => {

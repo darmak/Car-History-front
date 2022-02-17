@@ -1,5 +1,5 @@
 import React from 'react';
-import PageTitle from '../../components/Title';
+import PageTitle from '../../components/PageTitle';
 import RegistrationForm from './components/RegistrationForm';
 
 const Registration= () => {
