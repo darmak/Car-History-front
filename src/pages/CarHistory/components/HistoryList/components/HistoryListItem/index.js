@@ -1,22 +1,22 @@
 import React from 'react';
 import "./index.scss";
-import { Card, Typography } from 'antd';
+import { Card, Typography} from 'antd';
 
 const { Title } = Typography;
 
-const HistoryListItem = () => {
+const HistoryListItem = ({ _id, author, mileage, date, description }) => {
     return (
        <>
             <div className="history-list-item-wrapper">
                 <div className="history-list-item-data">
-                    <span>14/11/1996</span>
+                    <span>{date}</span>
                 </div>
-                <Card title="Author: Dima (buravkin.08@gmail.com)">
+                <Card title={`${author}`}>
                     <div className="history-list-item">
                         <div className="history-list-item-description">
                             <div>
-                                <Title level={5}>Repair description: <span>Lorem HnAAAHlklEQVR4Ae3dP3PTWBSGcbGzM6GCKqlIBRV0dHRJFarQ0eUT8LH4BnRU0NHR0UEFVdIlFRV7TzRksomPY8uykTk</span></Title>
-                                <Title level={5}>Mileage:<span>200 km</span></Title>
+                                <Title level={5}>Repair description: <span>{description}</span></Title>
+                                <Title level={5}>Mileage:<span> {mileage} km</span></Title>
                             </div>
                         </div>
                         <div className="history-list-item-info">

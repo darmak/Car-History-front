@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom';
 
 const { Title } = Typography;
 
-const CarCard = () => {
+const CarCard = ({_id, brand, model, year, VIN, mileage}) => {
+    const cardTitle = `${brand} ${model},${year},${VIN}`;
     return (
         <>
             <Row className="car-card">
                 <Col span={10} offset={7}>
-                    <Card title="BMW E38,2001">
+                    <Card title={cardTitle}>
                         <div className="car-card-wrapper">
                             <div className="car-card-left">
                                 <div>
@@ -22,7 +23,7 @@ const CarCard = () => {
                                 </div>
                                 <div className="car-card-description">
                                     <div>
-                                        <Title level={5}>Car mileage:<span className="car-counter">300</span><span className="car-km">km</span></Title>
+                                        <Title level={5}>Car mileage:<span className="car-counter">{mileage}</span><span className="car-km">km</span></Title>
                                         <Title level={5}>Number of services:<span className="car-counter">3</span></Title>
                                     </div>
                                     <div className="car-card-description-col">
