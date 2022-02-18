@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CarList from './components/CarList';
-import ModalWin from './components/modalWin';
+import ModalWin from './components/CreateCarForm';
 import GarageTitleWithBtn from './components/TitleWithBtn';
 
 const Garage = () => {
