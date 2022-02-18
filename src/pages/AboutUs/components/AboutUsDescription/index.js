@@ -1,7 +1,9 @@
 import React from 'react';
 import './index.scss';
+import vk from 'assets/socialNetworks/vk.png';
+import instagram from 'assets/socialNetworks/instagram.png';
+import facebook from 'assets/socialNetworks/facebook.png';
 import { Row, Col, Typography } from 'antd';
-import { Link } from 'react-router-dom';
 const { Title, Text } = Typography;
 
 const AboutUsDescription= () => {
@@ -16,9 +18,9 @@ const AboutUsDescription= () => {
           </Text>
         </div>
         <div className="description-links">
-          <img src="../../../../assets/socialNetworks/vk2.png" alt="VK"/>
-          <img src="../../../../assets/socialNetworks/instagram.png" alt="Instagram"/>
-          <img src="../../../../assets/socialNetworks/facebook.png" alt="Facebook"/>
+          <a href="https://vk.com/id194095709" target="_blank"><img className="social-networks" src={vk} alt="VK"/></a>
+          <a href="https://www.instagram.com/" target="_blank"><img className="social-networks" src={instagram} alt="Instagram"/></a>
+          <a href="#" target="_blank"><img className="social-networks" src={facebook} alt="Facebook"/></a>
         </div>
         <div className="contact-us">
           <Title level={3}>Contact us</Title>

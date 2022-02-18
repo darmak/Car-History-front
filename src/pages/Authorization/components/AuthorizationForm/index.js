@@ -17,8 +17,7 @@ const AuthorizationForm= () => {
         <Col className="authorization-form">
           <Form
             name="basic"
-            labelCol={{ span: 8 }}
-            wrapperCol={{ span: 16 }}
+            layout="vertical"
             autoComplete="off"
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
@@ -29,7 +28,7 @@ const AuthorizationForm= () => {
               name="email"
               rules={[{ required: true, message: 'Please input your email!' }]}
             >
-              <Input placeholder="Enter email"/>
+              <Input size="large" placeholder="Enter email"/>
             </Form.Item>
 
             <Form.Item
@@ -37,11 +36,11 @@ const AuthorizationForm= () => {
               name="password"
               rules={[{ required: true, message: 'Please input your password!' }]}
             >
-              <Input placeholder="Enter password"/>
+              <Input size="large" placeholder="Enter password"/>
             </Form.Item>
 
-            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-              <Button type="primary" htmlType="submit">
+            <Form.Item>
+              <Button size="large" type="primary" htmlType="submit">
                 Sign In
               </Button>
             </Form.Item>

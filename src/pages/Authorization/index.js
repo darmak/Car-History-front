@@ -1,5 +1,5 @@
 import React from 'react';
-import PageTitle from '../../components/Title';
+import PageTitle from '../../components/PageTitle';
 import AuthorizationForm from './components/AuthorizationForm';
 
 const Authorization= () => {
