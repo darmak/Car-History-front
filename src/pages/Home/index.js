@@ -3,14 +3,14 @@ import SearchPanel from './components/Search-panel';
 import Counters from './components/Counters';
 import CarCard from '../../components/Car-card';
 
-const Home = () => {
+function Home() {
   return (
     <>
-      <SearchPanel/>
-      <CarCard/>
-      <Counters/>
+      <SearchPanel />
+      <CarCard />
+      <Counters />
     </>
-  )
+  );
 }
 
 export default Home;

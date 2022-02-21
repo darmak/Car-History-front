@@ -1,25 +1,25 @@
 import React from 'react';
 import './assets/styles/index.scss';
-import Router from './router/index.js';
-import PageHeader from './components/PageHeader/index.js';
 import { Layout } from 'antd';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
+import Router from './router';
+import PageHeader from './components/PageHeader';
+
 const { Header, Content } = Layout;
 
-const App = () => {
-    return (
-      <BrowserRouter>
-        <Layout className='wrapper' >
-          <Header className='page-header'>
-            <PageHeader/>
-          </Header>
-          <Content>
-            <Router/>
-          </Content>
+function App() {
+  return (
+    <BrowserRouter>
+      <Layout className="wrapper">
+        <Header className="page-header">
+          <PageHeader />
+        </Header>
+        <Content>
+          <Router />
+        </Content>
       </Layout>
-      </BrowserRouter>
-      
-  )
+    </BrowserRouter>
+  );
 }
 
 export default App;
