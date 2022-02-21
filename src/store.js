@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './features/employee-slice';
+import carReducer from './features/car-slice.js';
+import historyReducer from './features/history-slice.js';
 
 export const store = configureStore({
-    reducer: {
-        user: userReducer,
-    }
-})
+  reducer: {
+    car: carReducer,
+    history: historyReducer
+  }
+});
