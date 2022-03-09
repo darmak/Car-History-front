@@ -30,7 +30,7 @@ const initialState = {
 };
 
 const historySlice = createSlice({
-  name: 'history',
+  name: 'histories',
   initialState,
   reducers: {}
 });

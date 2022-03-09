@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const BASE_URL = 'http://localhost:5000';
 
-export const fetchUsers = createAsyncThunk('user/fetchAllUsers', async () => {
+export const fetchOneCar = createAsyncThunk('car/fetchOneCar', async () => {
   const response = await axios
     .get(`${BASE_URL}/user`, {
       headers: {

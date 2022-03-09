@@ -32,12 +32,3 @@
         }
       }
 }
-
-// "extends": [
-//     "plugin:react/recommended",
-//     "airbnb",
-//     "plugin:prettier/recommended",
-//     "prettier"
-// ],
-// "eslintIgnore": ["./config/webpack.config.js"]
-// "react/prop-types": false
