@@ -3,16 +3,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const BASE_URL = 'http://localhost:5000';
 
-export const fetchOneCar = createAsyncThunk('car/fetchOneCar', async () => {
+export const carSearch = createAsyncThunk('car/search', async (params) => {
   const response = await axios
-    .get(`${BASE_URL}/user`, {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: `JWT ${localStorage.getItem('token')}`
-      }
-    })
+    .get(`${BASE_URL}/cars`, { params })
     .then((res) => {
-      console.log(res.data);
       return res.data;
     })
     .catch(() => console.log('ошибка фронта'));

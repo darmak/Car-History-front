@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import CarCard from '../../../../components/Car-card';
 
 function CarList() {
-  const cars = useSelector((state) => state.car.cars);
+  const cars = useSelector((state) => state.cars.cars);
 
   const elements = cars.map((item) => {
     const { _id, ...itemProps } = item;

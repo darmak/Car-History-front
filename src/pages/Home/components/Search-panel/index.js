@@ -5,12 +5,7 @@ import './index.scss';
 const { Title } = Typography;
 const { Search } = Input;
 
-function SearchPanel({ setClickSearch }) {
-  const searchHandler = () => {
-    console.log('request search');
-    setClickSearch(true);
-  };
-
+function SearchPanel({ searchHandler }) {
   return (
     <Row className="row-wrapper">
       <Col span={8} offset={8}>

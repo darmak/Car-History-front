@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import carReducer from './features/car-slice.js';
-import historyReducer from './features/history-slice.js';
+import carsReducer from './features/cars-slice.js';
+import historiesReducer from './features/histories-slice.js';
 
 export const store = configureStore({
   reducer: {
-    car: carReducer,
-    history: historyReducer
+    cars: carsReducer,
+    histories: historiesReducer
   }
 });
