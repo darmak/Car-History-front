@@ -9,6 +9,6 @@ export const carSearch = createAsyncThunk('car/search', async (params) => {
     .then((res) => {
       return res.data;
     })
-    .catch(() => console.log('ошибка фронта'));
+    .catch(() => console.log('Error: did not get car'));
   return response;
 });

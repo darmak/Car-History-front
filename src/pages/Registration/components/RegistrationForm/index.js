@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import './index.scss';
 import { Row, Col, Form, Input, Button } from 'antd';
 
 function RegistrationForm() {
-  const onFinish = (values) => {
+  const dispatch = useDispatch();
+  const [user, setUser] = useState({ name: '', email: '', password: '' });
+  const onSubmit = (values) => {
     console.log('Success:', values);
+    if (values.password === values.rePassword) {
+    }
   };
 
-  const onFinishFailed = (errorInfo) => {
+  const onSubmitFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
 
@@ -18,11 +23,11 @@ function RegistrationForm() {
           name="basic"
           layout="vertical"
           autoComplete="off"
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}>
+          onFinish={onSubmit}
+          onFinishFailed={onSubmitFailed}>
           <Form.Item
             label="Username"
-            name="login"
+            name="name"
             rules={[{ required: true, message: 'Please input your username!' }]}>
             <Input size="large" placeholder="Enter username" />
           </Form.Item>
