@@ -3,12 +3,20 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const BASE_URL = 'http://localhost:5000';
 
-// export const authHost = axios.create({ baseURL: BASE_URL });
-export const authHost = createAsyncThunk('user/auth', async () => {});
+export const registration = createAsyncThunk('user/registration', async (data) => {
+  return axios.post(`${BASE_URL}/registration`, data).then((res) => {
+    return res.data;
+  });
+});
 
-const authInterceptor = (config) => {
-  config.headers.authorization = `JWT ${localStorage.getItem('token')}`;
-  return config;
-};
+export const login = createAsyncThunk('user/login', async (params) => {
+  return axios.post(`${BASE_URL}/login`, params).then((res) => {
+    return res.data;
+  });
+});
 
-authHost.interceptors.request.use(authInterceptor);
+export const check = createAsyncThunk('user/check', async () => {
+  return axios.get(`${BASE_URL}/auth`).then((res) => {
+    return res.data;
+  });
+});

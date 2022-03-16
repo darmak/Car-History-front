@@ -35,5 +35,4 @@ const historiesSlice = createSlice({
   reducers: {}
 });
 
-export const { registrationRoute, authorizationRoute } = historiesSlice.actions;
 export default historiesSlice.reducer;

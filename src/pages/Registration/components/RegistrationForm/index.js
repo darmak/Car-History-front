@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
-import './index.scss';
+import { useNavigate } from 'react-router-dom';
 import { Row, Col, Form, Input, Button } from 'antd';
+import { registration } from '../../../../features/usersCreator.js';
+
+import './index.scss';
 
 function RegistrationForm() {
   const dispatch = useDispatch();
-  const [user, setUser] = useState({ name: '', email: '', password: '' });
-  const onSubmit = (values) => {
-    console.log('Success:', values);
+  const navigate = useNavigate();
+  const onSubmit = async (values) => {
     if (values.password === values.rePassword) {
+      dispatch(registration(values)).then(() => navigate('/authorization'));
     }
   };
 
@@ -43,14 +46,14 @@ function RegistrationForm() {
             label="Password"
             name="password"
             rules={[{ required: true, message: 'Please input your password!' }]}>
-            <Input size="large" placeholder="Enter password" />
+            <Input.Password size="large" placeholder="Enter password" />
           </Form.Item>
 
           <Form.Item
             label="Repeat password"
             name="rePassword"
             rules={[{ required: true, message: 'Please input your password!' }]}>
-            <Input size="large" placeholder="Repeat password" />
+            <Input.Password size="large" placeholder="Repeat password" />
           </Form.Item>
 
           <Form.Item>

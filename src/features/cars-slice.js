@@ -17,5 +17,4 @@ const carsSlice = createSlice({
   }
 });
 
-export const { registrationRoute, authorizationRoute } = carsSlice.actions;
 export default carsSlice.reducer;

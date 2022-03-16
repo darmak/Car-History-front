@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const BASE_URL = 'http://localhost:5000';
 
-export const carSearch = createAsyncThunk('car/search', async (params) => {
+export const carSearch = createAsyncThunk('car/carSearch', async (params) => {
   const response = await axios
     .get(`${BASE_URL}/cars`, { params })
     .then((res) => {
