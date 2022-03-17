@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Row, Col, Form, Input, Button } from 'antd';
-import { registration } from '../../../../features/usersCreator.js';
+import { register } from '../../../../features/authCreactor.js';
 
 import './index.scss';
 
@@ -11,7 +11,7 @@ function RegistrationForm() {
   const navigate = useNavigate();
   const onSubmit = async (values) => {
     if (values.password === values.rePassword) {
-      dispatch(registration(values)).then(() => navigate('/authorization'));
+      dispatch(register(values)).then(() => navigate('/authorization'));
     }
   };
 

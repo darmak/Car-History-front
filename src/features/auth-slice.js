@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registration, login } from './authCreactor';
+import { register, login } from './authCreactor';
 
 const initialState = {
   user: {},
@@ -18,7 +18,7 @@ const authSlice = createSlice({
     }
   },
   extraReducers: {
-    [registration.fulfilled.type]: (state, action) => {
+    [register.fulfilled.type]: (state, action) => {
       state.user = action.payload;
     },
     [login.fulfilled.type]: (state, action) => {

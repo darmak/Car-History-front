@@ -4,17 +4,17 @@ import { Row, Col, Menu, Button } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import HistorySvg from '../../assets/logo/History.svg';
 import CarSvg from '../../assets/logo/Car.svg';
-import { authorizationRoute } from '../../features/users-slice.js';
+import { logout } from '../../features/auth-slice';
 
 import './index.scss';
 
 function PageHeader() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const authorization = useSelector((state) => state.users.authorization);
+  const isAuthorized = useSelector((state) => state.auth.isAuthorized);
 
   const logOutHandler = () => {
-    dispatch(authorizationRoute());
+    dispatch(logout());
     navigate('/');
   };
   return (
@@ -37,7 +37,7 @@ function PageHeader() {
           <Menu.Item key="2">
             <Link to="/about-us">About Us</Link>
           </Menu.Item>
-          {authorization ? (
+          {isAuthorized ? (
             <>
               <Menu.Item key="3">
                 <Link to="/garage">Garage</Link>
@@ -51,7 +51,7 @@ function PageHeader() {
       </Col>
       <Col className="btns-wrapper" span={6} offset={2}>
         <div className="wrapper">
-          {authorization ? (
+          {isAuthorized ? (
             <Button onClick={logOutHandler} className="btn-sign_up">
               Log out
             </Button>

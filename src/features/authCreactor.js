@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const BASE_URL = 'http://localhost:5000';
 
-export const registration = createAsyncThunk('user/registration', async (userData) => {
+export const register = createAsyncThunk('user/registration', async (userData) => {
   return axios.post(`${BASE_URL}/registration`, userData).then((res) => {
     return res.data;
   });
