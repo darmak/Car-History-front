@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  history: [
+  histories: [
     {
       _id: '10',
       author: 'Dima (buravkin.08@gmail.com)',
@@ -29,11 +29,10 @@ const initialState = {
   ]
 };
 
-const historySlice = createSlice({
+const historiesSlice = createSlice({
   name: 'histories',
   initialState,
   reducers: {}
 });
 
-export const { registrationRoute, authorizationRoute } = historySlice.actions;
-export default historySlice.reducer;
+export default historiesSlice.reducer;

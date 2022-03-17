@@ -1,15 +1,34 @@
 import React, { useState } from 'react';
-import SearchPanel from './components/Search-panel';
+import { useSelector, useDispatch } from 'react-redux';
+import { Spin, Space } from 'antd';
+import SearchPanel from './components/SearchPanel';
 import Counters from './components/Counters';
-import CarCard from '../../components/Car-card';
+import CarCard from '../../components/CarCard';
+import { carSearch } from '../../features/carsCreator.js';
+
+import './index.scss';
 
 function Home() {
-  const [clickSearch, setClickSearch] = useState(false);
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  const cars = useSelector((state) => state.cars.carsSearch);
+  const searchHandler = (value) => {
+    setLoading(true);
+    dispatch(carSearch({ vin: value })).then(() => setLoading(false));
+  };
 
   return (
     <>
-      <SearchPanel setClickSearch={setClickSearch} />
-      {clickSearch ? <CarCard /> : 'спиннер'}
+      <SearchPanel setLoading={setLoading} searchHandler={searchHandler} />
+      {loading ? (
+        <div className="spinner">
+          <Space size="middle">
+            <Spin size="large" />
+          </Space>
+        </div>
+      ) : (
+        !!cars.length && <CarCard {...cars[0]} />
+      )}
       <Counters />
     </>
   );

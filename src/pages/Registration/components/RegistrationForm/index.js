@@ -1,13 +1,21 @@
 import React from 'react';
-import './index.scss';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Row, Col, Form, Input, Button } from 'antd';
+import { registration } from '../../../../features/usersCreator.js';
+
+import './index.scss';
 
 function RegistrationForm() {
-  const onFinish = (values) => {
-    console.log('Success:', values);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const onSubmit = async (values) => {
+    if (values.password === values.rePassword) {
+      dispatch(registration(values)).then(() => navigate('/authorization'));
+    }
   };
 
-  const onFinishFailed = (errorInfo) => {
+  const onSubmitFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
 
@@ -18,11 +26,11 @@ function RegistrationForm() {
           name="basic"
           layout="vertical"
           autoComplete="off"
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}>
+          onFinish={onSubmit}
+          onFinishFailed={onSubmitFailed}>
           <Form.Item
             label="Username"
-            name="login"
+            name="name"
             rules={[{ required: true, message: 'Please input your username!' }]}>
             <Input size="large" placeholder="Enter username" />
           </Form.Item>
@@ -38,14 +46,14 @@ function RegistrationForm() {
             label="Password"
             name="password"
             rules={[{ required: true, message: 'Please input your password!' }]}>
-            <Input size="large" placeholder="Enter password" />
+            <Input.Password size="large" placeholder="Enter password" />
           </Form.Item>
 
           <Form.Item
             label="Repeat password"
             name="rePassword"
             rules={[{ required: true, message: 'Please input your password!' }]}>
-            <Input size="large" placeholder="Repeat password" />
+            <Input.Password size="large" placeholder="Repeat password" />
           </Form.Item>
 
           <Form.Item>

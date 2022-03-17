@@ -2,12 +2,12 @@ import React from 'react';
 import './index.scss';
 import { Card, Row, Col, Typography, Image } from 'antd';
 import { Link } from 'react-router-dom';
-
 const { Title } = Typography;
 
-function CarCard(props) {
-  const { brand, model, year, VIN, mileage } = props;
-  const cardTitle = `${brand} ${model},${year},${VIN}`;
+function CarCard({ year, vin, mileage, carBrand, carModel }) {
+  const { brand } = carBrand;
+  const { model } = carModel;
+  const cardTitle = `${brand} ${model},${year},${vin}`;
   return (
     <Row className="car-card">
       <Col span={10} offset={7}>
