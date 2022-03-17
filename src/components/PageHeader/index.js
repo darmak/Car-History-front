@@ -15,7 +15,7 @@ function PageHeader() {
 
   const logOutHandler = () => {
     dispatch(authorizationRoute());
-    navigate('');
+    navigate('/');
   };
   return (
     <Row>

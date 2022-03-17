@@ -12,11 +12,10 @@ function AuthorizationForm() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.users.user);
   const onFinish = (values) => {
-    console.log('Success:', values);
     dispatch(login({ email: values.email, password: values.password })).then((res) => {
       localStorage.setItem('token', res.payload.token);
       dispatch(authorizationRoute());
-      navigate('');
+      navigate('/');
     });
   };
 

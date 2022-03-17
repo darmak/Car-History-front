@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registration } from './usersCreator';
+import { registration, login } from './usersCreator';
 
 const initialState = {
   user: {},
@@ -20,6 +20,9 @@ const usersSlice = createSlice({
   extraReducers: {
     [registration.fulfilled.type]: (state, action) => {
       state.user = action.payload;
+    },
+    [login.fulfilled.type]: (state, action) => {
+      state.user = action.payload.user;
     }
   }
 });

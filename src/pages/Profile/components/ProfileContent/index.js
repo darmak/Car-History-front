@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import './index.scss';
 import { Row, Col, Button, Typography, Upload, message } from 'antd';
+import { useSelector } from 'react-redux';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+
+import './index.scss';
 
 const { Title } = Typography;
 
@@ -25,6 +27,7 @@ function beforeUpload(file) {
 }
 
 function ProfileContent() {
+  const user = useSelector((state) => state.users.user);
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
 
@@ -69,10 +72,10 @@ function ProfileContent() {
         </Col>
         <Col span={11}>
           <Title level={4}>
-            Username: <span>Dima</span>
+            Username: <span>{user.name}</span>
           </Title>
           <Title level={4}>
-            Email: <span>Buravkin.08@gmail.com</span>
+            Email: <span>{user.email}</span>
           </Title>
           <Title level={4}>
             Total cars: <span>4</span>
