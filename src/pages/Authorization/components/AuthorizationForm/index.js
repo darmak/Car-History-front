@@ -2,8 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Row, Col, Form, Input, Button } from 'antd';
-import { login } from '../../../../features/usersCreator.js';
-import { authorizationRoute } from '../../../../features/users-slice.js';
+import { login } from '../../../../features/authCreactor.js';
 
 import './index.scss';
 
@@ -12,9 +11,7 @@ function AuthorizationForm() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.users.user);
   const onFinish = (values) => {
-    dispatch(login({ email: values.email, password: values.password })).then((res) => {
-      localStorage.setItem('token', res.payload.token);
-      dispatch(authorizationRoute());
+    dispatch(login({ email: values.email, password: values.password })).then(() => {
       navigate('/');
     });
   };
