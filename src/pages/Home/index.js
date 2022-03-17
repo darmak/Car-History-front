@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Spin, Space } from 'antd';
-import SearchPanel from './components/Search-panel';
+import SearchPanel from './components/SearchPanel';
 import Counters from './components/Counters';
-import CarCard from '../../components/Car-card';
+import CarCard from '../../components/CarCard';
 import { carSearch } from '../../features/carsCreator.js';
 
 import './index.scss';

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Spin, Space } from 'antd';
-import CarCard from '../../../../components/Car-card';
+import CarCard from '../../../../components/CarCard';
 import { carSearch } from '../../../../features/carsCreator.js';
 
 function CarList() {
