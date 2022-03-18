@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { carSearch } from './carsCreator';
+import { searchCars, userCars } from './carsCreator';
 
 const initialState = {
   cars: [],
@@ -11,8 +11,11 @@ const carsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [carSearch.fulfilled.type]: (state, action) => {
+    [searchCars.fulfilled.type]: (state, action) => {
       state.carsSearch = action.payload;
+    },
+    [userCars.fulfilled.type]: (state, action) => {
+      state.cars = action.payload;
     }
   }
 });

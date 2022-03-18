@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Spin, Space } from 'antd';
 import CarCard from '../../../../components/CarCard';
-import { carSearch } from '../../../../features/carsCreator.js';
+import { userCars } from '../../../../features/carsCreator.js';
 
 function CarList() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const cars = useSelector((state) => state.cars.carsSearch);
-  const user = useSelector((state) => state.users.user);
+  const cars = useSelector((state) => state.cars.cars);
+  const user = useSelector((state) => state.auth.user);
   useEffect(() => {
     setLoading(true);
-    dispatch(carSearch({ userId: user.id })).then(() => setLoading(false));
+    dispatch(userCars({ userId: user.id })).then(() => setLoading(false));
   }, []);
 
   const elements = cars.map((item) => {
