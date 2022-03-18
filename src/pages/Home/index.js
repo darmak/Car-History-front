@@ -32,10 +32,6 @@ function Home() {
       break;
     }
   }
-  // const elements = cars.map((item) => {
-  //   const { id, ...itemProps } = item;
-  //   return <CarCard {...itemProps} key={id} />;
-  // });
 
   return (
     <>
