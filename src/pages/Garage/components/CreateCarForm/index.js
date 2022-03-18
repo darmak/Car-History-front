@@ -1,6 +1,8 @@
 import React from 'react';
+import { Typography, Form, Input, Button, Select } from 'antd';
+const { Option } = Select;
+
 import './index.scss';
-import { Typography, Form, Input, Button } from 'antd';
 
 const { Title } = Typography;
 
@@ -30,23 +32,34 @@ function ModalWin({ active, setActive }) {
               onFinishFailed={onFinishFailed}>
               <Form.Item
                 label="Car brand"
-                name="carBrand"
-                rules={[{ required: true, message: 'Please input your car brand!' }]}>
-                <Input size="large" placeholder="Enter car brand" />
+                name="Brand"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please input your car brand!'
+                  }
+                ]}>
+                <Select placeholder="Select a brand">
+                  <Option value="jack">Jack</Option>
+                  <Option value="lucy">Lucy</Option>
+                  <Option value="tom">Tom</Option>
+                </Select>
               </Form.Item>
-
               <Form.Item
                 label="Model of car"
-                name="modelOfCar"
+                name="Model"
                 rules={[
                   {
                     required: true,
                     message: 'Please input your model of car!'
                   }
                 ]}>
-                <Input size="large" placeholder="Enter model of car" />
+                <Select placeholder="Select a model">
+                  <Option value="jack">Jack</Option>
+                  <Option value="lucy">Lucy</Option>
+                  <Option value="tom">Tom</Option>
+                </Select>
               </Form.Item>
-
               <Form.Item
                 label="Year of car manufacture"
                 name="yearOfCarManufacture"
