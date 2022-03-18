@@ -5,7 +5,6 @@ import SearchPanel from './components/SearchPanel';
 import Counters from './components/Counters';
 import CarCard from '../../components/CarCard';
 import { carSearch } from '../../features/carsCreator.js';
-import { debounce } from '../../helpers/debounce';
 
 import './index.scss';
 
@@ -20,8 +19,6 @@ function Home() {
     }
   };
 
-  const searchDebounce = debounce(searchHandler, 500);
-
   const elements = [];
 
   for (let i = 0; i < cars.length; i++) {
@@ -35,7 +32,7 @@ function Home() {
 
   return (
     <>
-      <SearchPanel setLoading={setLoading} searchDebounce={searchDebounce} />
+      <SearchPanel searchHandler={searchHandler} debounceDelay={500} />
       {loading ? (
         <div className="spinner">
           <Space size="middle">

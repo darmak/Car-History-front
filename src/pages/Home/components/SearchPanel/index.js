@@ -1,11 +1,15 @@
 import React from 'react';
 import { Input, Row, Col, Typography } from 'antd';
+import { debounce } from '../../../../helpers/debounce.js';
+
 import './index.scss';
 
 const { Title } = Typography;
 const { Search } = Input;
 
-function SearchPanel({ searchDebounce }) {
+function SearchPanel({ searchHandler, debounceDelay }) {
+  const onChange = debounceDelay ? debounce(searchHandler, debounceDelay) : searchHandler;
+
   return (
     <Row className="row-wrapper">
       <Col span={8} offset={8}>
@@ -16,7 +20,7 @@ function SearchPanel({ searchDebounce }) {
           allowClear
           enterButton="Search"
           size="large"
-          onChange={searchDebounce}
+          onChange={onChange}
         />
       </Col>
     </Row>
