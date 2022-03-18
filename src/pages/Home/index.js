@@ -23,7 +23,7 @@ function Home() {
 
   const elements = cars.map((item) => {
     const { id, ...itemProps } = item;
-    return <CarCard {...itemProps} key={id} />;
+    return <CarCard carId={id} {...itemProps} key={id} />;
   });
 
   return (
