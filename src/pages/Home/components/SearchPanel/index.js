@@ -5,7 +5,7 @@ import './index.scss';
 const { Title } = Typography;
 const { Search } = Input;
 
-function SearchPanel({ searchHandler }) {
+function SearchPanel({ searchDebounce }) {
   return (
     <Row className="row-wrapper">
       <Col span={8} offset={8}>
@@ -16,7 +16,7 @@ function SearchPanel({ searchHandler }) {
           allowClear
           enterButton="Search"
           size="large"
-          onSearch={searchHandler}
+          onChange={searchDebounce}
         />
       </Col>
     </Row>

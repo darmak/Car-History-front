@@ -5,7 +5,7 @@ const BASE_URL = 'http://localhost:5000';
 
 export const carSearch = createAsyncThunk('car/carSearch', async (params) => {
   const response = await axios
-    .get(`${BASE_URL}/cars`, { params })
+    .get(`${BASE_URL}/cars/search`, { params })
     .then((res) => {
       return res.data;
     })
