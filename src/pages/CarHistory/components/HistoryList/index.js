@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Row, Col, Spin, Space } from 'antd';
+import { Row, Col } from 'antd';
 import HistoryListItem from './components/HistoryListItem';
 import { carHistories } from '../../../../features/historiesCreator';
+import Spinner from '../../../../components/Spinner';
 
 import './index.scss';
 
@@ -18,19 +19,12 @@ function HistoryList() {
   }, []);
 
   const elements = histories.map((item) => {
-    const { id, ...itemProps } = item;
-    return <HistoryListItem {...itemProps} key={id} />;
+    return <HistoryListItem {...item} key={item.id} />;
   });
   return (
     <Row className="history-list">
       <Col span={12} offset={5}>
-        {loading ? (
-          <Space size="middle">
-            <Spin size="large" />
-          </Space>
-        ) : (
-          elements
-        )}
+        {loading ? <Spinner /> : elements}
       </Col>
     </Row>
   );

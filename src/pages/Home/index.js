@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Spin, Space } from 'antd';
 import SearchPanel from './components/SearchPanel';
 import Counters from './components/Counters';
 import CarCard from '../../components/CarCard';
 import { searchCars } from '../../features/carsCreator.js';
+import Spinner from '../../components/Spinner';
 
 import './index.scss';
 
@@ -28,15 +28,7 @@ function Home() {
   return (
     <>
       <SearchPanel searchHandler={searchHandler} debounceDelay={500} />
-      {loading ? (
-        <div className="spinner">
-          <Space size="middle">
-            <Spin size="large" />
-          </Space>
-        </div>
-      ) : (
-        !!cars.length && elements
-      )}
+      {loading ? <Spinner /> : !!cars.length && elements}
       <Counters />
     </>
   );
