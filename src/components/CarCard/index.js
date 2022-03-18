@@ -5,16 +5,17 @@ import { Link } from 'react-router-dom';
 import { setSelectedCar } from '../../features/cars-slice';
 
 import './index.scss';
+
 const { Title } = Typography;
 
-function CarCard({ year, vin, mileage, carBrand, carModel, carId }) {
+function CarCard({ year, vin, mileage, carBrand, carModel, id }) {
   const dispatch = useDispatch();
   const { brand } = carBrand;
   const { model } = carModel;
   const cardTitle = `${brand} ${model},${year},${vin}`;
 
   const linkHandler = () => {
-    dispatch(setSelectedCar({ year, vin, mileage, brand, model, carId }));
+    dispatch(setSelectedCar({ year, vin, mileage, brand, model, id }));
   };
   return (
     <Row className="car-card">

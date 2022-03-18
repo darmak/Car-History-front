@@ -5,12 +5,17 @@ import { Card, Typography } from 'antd';
 
 const { Title } = Typography;
 
-function HistoryListItem({ data }) {
-  const { author, mileage, date, description } = data;
+function HistoryListItem({ author, mileage, date, description }) {
+  const currentDate = new Date(date);
+  console.log(currentDate);
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+  const day = currentDate.getDate();
+  const textDate = `${day}.${month + 1}.${year}`;
   return (
     <div className="history-list-item-wrapper">
       <div className="history-list-item-data">
-        <span>{date}</span>
+        <span>{textDate}</span>
       </div>
       <Card title={`${author}`}>
         <div className="history-list-item">
