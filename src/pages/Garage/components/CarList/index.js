@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Spin, Space } from 'antd';
 import CarCard from '../../../../components/CarCard';
 import { userCars } from '../../../../features/carsCreator.js';
+import Spinner from '../../../../components/Spinner';
 
 function CarList() {
   const dispatch = useDispatch();
@@ -17,17 +17,7 @@ function CarList() {
   const elements = cars.map((item) => {
     return <CarCard {...item} key={item.id} />;
   });
-  return (
-    <>
-      {loading ? (
-        <Space size="middle">
-          <Spin size="large" />
-        </Space>
-      ) : (
-        elements
-      )}
-    </>
-  );
+  return <>{loading ? <Spinner /> : elements}</>;
 }
 
 export default CarList;

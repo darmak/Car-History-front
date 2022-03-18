@@ -1,20 +1,30 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import './index.scss';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col } from 'antd';
 import HistoryListItem from './components/HistoryListItem';
+import { carHistories } from '../../../../features/historiesCreator';
+import Spinner from '../../../../components/Spinner';
+
+import './index.scss';
 
 function HistoryList() {
-  const histories = useSelector((state) => state.history.history);
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  const car = useSelector((state) => state.cars.selectedCar);
+  const histories = useSelector((state) => state.histories.histories);
+
+  useEffect(() => {
+    setLoading(true);
+    dispatch(carHistories({ carId: car.id })).then(() => setLoading(false));
+  }, []);
 
   const elements = histories.map((item) => {
-    const { _id, ...itemProps } = item;
-    return <HistoryListItem data={itemProps} key={_id} />;
+    return <HistoryListItem {...item} key={item.id} />;
   });
   return (
     <Row className="history-list">
       <Col span={12} offset={5}>
-        {elements}
+        {loading ? <Spinner /> : elements}
       </Col>
     </Row>
   );

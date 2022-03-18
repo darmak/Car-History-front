@@ -1,16 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './index.scss';
 import { Card, Typography } from 'antd';
+import { formatDate } from '../../../../../../helpers/formatDate';
+
+import './index.scss';
 
 const { Title } = Typography;
 
-function HistoryListItem({ data }) {
-  const { author, mileage, date, description } = data;
+function HistoryListItem({ author, mileage, date, description }) {
+  const textDate = formatDate(date);
   return (
     <div className="history-list-item-wrapper">
       <div className="history-list-item-data">
-        <span>{date}</span>
+        <span>{textDate}</span>
       </div>
       <Card title={`${author}`}>
         <div className="history-list-item">
@@ -23,9 +24,6 @@ function HistoryListItem({ data }) {
                 Mileage:<span> {mileage} km</span>
               </Title>
             </div>
-          </div>
-          <div className="history-list-item-info">
-            <Link to="/">More...</Link>
           </div>
         </div>
       </Card>
