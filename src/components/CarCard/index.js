@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Row, Col, Typography, Image } from 'antd';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setSelectCar } from '../../features/cars-slice';
+import { setSelectedCar } from '../../features/cars-slice';
 
 import './index.scss';
 const { Title } = Typography;
@@ -14,7 +14,7 @@ function CarCard({ year, vin, mileage, carBrand, carModel, carId }) {
   const cardTitle = `${brand} ${model},${year},${vin}`;
 
   const linkHandler = () => {
-    dispatch(setSelectCar({ year, vin, mileage, brand, model, carId }));
+    dispatch(setSelectedCar({ year, vin, mileage, brand, model, carId }));
   };
   return (
     <Row className="car-card">

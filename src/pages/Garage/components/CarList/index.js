@@ -15,8 +15,7 @@ function CarList() {
   }, []);
 
   const elements = cars.map((item) => {
-    const { id, ...itemProps } = item;
-    return <CarCard carId={id} {...itemProps} key={id} />;
+    return <CarCard {...item} key={item.id} />;
   });
   return (
     <>

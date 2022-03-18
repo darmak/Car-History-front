@@ -4,15 +4,15 @@ import { searchCars, userCars } from './carsCreator';
 const initialState = {
   cars: [],
   carsSearch: [],
-  selectCar: {}
+  selectedCar: {}
 };
 
 const carsSlice = createSlice({
   name: 'car',
   initialState,
   reducers: {
-    setSelectCar(state, action) {
-      state.selectCar = action.payload;
+    setSelectedCar(state, action) {
+      state.selectedCar = action.payload;
     }
   },
   extraReducers: {
@@ -25,5 +25,5 @@ const carsSlice = createSlice({
   }
 });
 
-export const { setSelectCar } = carsSlice.actions;
+export const { setSelectedCar } = carsSlice.actions;
 export default carsSlice.reducer;
