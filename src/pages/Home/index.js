@@ -6,8 +6,6 @@ import CarCard from '../../components/CarCard';
 import { searchCars } from '../../features/carsCreator.js';
 import Spinner from '../../components/Spinner';
 
-import './index.scss';
-
 function Home() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
