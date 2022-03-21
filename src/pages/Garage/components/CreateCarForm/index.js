@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Typography, Form, Input, Button, Select } from 'antd';
-const { Option } = Select;
+import { useSelector, useDispatch } from 'react-redux';
+import { allBrands } from '../../../../features/brandsCreator';
 
 import './index.scss';
 
+const { Option } = Select;
 const { Title } = Typography;
 
 function ModalWin({ active, setActive }) {
+  const dispatch = useDispatch();
+  const brands = useSelector((state) => state.brands.brands);
+  const user = useSelector((state) => state.auth.user);
+  const [newCar, setNewCar] = useState({
+    mileage: '',
+    year: 0,
+    vin: '',
+    userId: user.id,
+    carBrandId: 0,
+    carModelId: 0
+  });
+
+  useEffect(() => {
+    dispatch(allBrands());
+  }, []);
+
+  function BrandHandleChange(value) {
+    setNewCar({ ...newCar, carBrandId: value });
+  }
+
   const onFinish = (values) => {
     console.log('Success:', values);
   };
@@ -14,6 +36,14 @@ function ModalWin({ active, setActive }) {
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
+
+  const brandsElements = brands.map((item) => {
+    return (
+      <Option key={item.id} value={item.id}>
+        {item.brand}
+      </Option>
+    );
+  });
 
   return (
     <div className={active ? 'modal show' : 'modal'} onClick={() => setActive(false)}>
@@ -39,10 +69,8 @@ function ModalWin({ active, setActive }) {
                     message: 'Please input your car brand!'
                   }
                 ]}>
-                <Select placeholder="Select a brand">
-                  <Option value="jack">Jack</Option>
-                  <Option value="lucy">Lucy</Option>
-                  <Option value="tom">Tom</Option>
+                <Select onChange={BrandHandleChange} placeholder="Select a brand">
+                  {brandsElements}
                 </Select>
               </Form.Item>
               <Form.Item
@@ -59,6 +87,12 @@ function ModalWin({ active, setActive }) {
                   <Option value="lucy">Lucy</Option>
                   <Option value="tom">Tom</Option>
                 </Select>
+              </Form.Item>
+              <Form.Item
+                label="Car VIN"
+                name="carVin"
+                rules={[{ required: true, message: 'Please input your car VIN!' }]}>
+                <Input size="large" placeholder="Enter car VIN" />
               </Form.Item>
               <Form.Item
                 label="Year of car manufacture"
