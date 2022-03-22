@@ -1,53 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Form, Input, Button, Select } from 'antd';
+import { Form, Button, Input, Select, Modal } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
+import { userCars } from '../../../../features/carsCreator';
 import { allBrands } from '../../../../features/brandsCreator';
 import { allCarModels } from '../../../../features/modelsCreator';
+import { addNewCar } from '../../../../features/carsCreator';
+import { carRules } from './carFormConstants';
 
 import './index.scss';
 
 const { Option } = Select;
-const { Title } = Typography;
 
-function ModalWin({ active, setActive }) {
+function ModalWin({ isModalVisible, setIsModalVisible }) {
+  const [form] = Form.useForm();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const brands = useSelector((state) => state.brands.brands);
   const models = useSelector((state) => state.models.models);
-  const [selectedBrand, setSelectedBrand] = useState(false);
-  const [newCar, setNewCar] = useState({
-    mileage: '',
-    year: 0,
-    vin: '',
-    userId: user.id,
-    carBrandId: 0,
-    carModelId: 0
-  });
+  const [brandValue, setBrandValue] = useState(0);
+  const [isBrandSelected, setIsBrandSelected] = useState(false);
 
   useEffect(() => {
     dispatch(allBrands());
   }, []);
 
   useEffect(() => {
-    dispatch(allCarModels({ carBrandId: newCar.carBrandId }));
-  }, [newCar.carBrandId]);
+    dispatch(allCarModels({ carBrandId: brandValue }));
+  }, [brandValue]);
 
-  function BrandHandleChange(value) {
-    setSelectedBrand(true);
-    setNewCar({ ...newCar, carBrandId: value });
+  function onBrandChange(value) {
+    setBrandValue(value);
+    setIsBrandSelected(true);
   }
 
-  function modelHandleChange(value) {
-    setSelectedBrand(true);
-    setNewCar({ ...newCar, carModelId: value });
-  }
-
-  const onFinish = (values) => {
-    console.log('Success:', values);
+  const onFinish = (value) => {
+    dispatch(addNewCar({ ...value, userId: user.id })).then(() => {
+      dispatch(userCars({ userId: user.id }));
+    });
+    setIsModalVisible(false);
+    form.resetFields();
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+  const onClose = () => {
+    form.resetFields();
+    setIsModalVisible(false);
   };
 
   const brandsElements = brands.map((item) => {
@@ -67,88 +63,49 @@ function ModalWin({ active, setActive }) {
   });
 
   return (
-    <div className={active ? 'modal show' : 'modal'} onClick={() => setActive(false)}>
-      <div className="modal-dialog" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-content">
-          <div className="modal-title">
-            <Title level={1}>Add new car</Title>
-          </div>
-          <div className="modal-form">
-            <Form
-              className="form"
-              name="basic"
-              layout="vertical"
-              autoComplete="off"
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}>
-              <Form.Item
-                label="Car brand"
-                name="Brand"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input your car brand!'
-                  }
-                ]}>
-                <Select onChange={BrandHandleChange} placeholder="Select a brand">
-                  {brandsElements}
-                </Select>
-              </Form.Item>
-              {selectedBrand ? (
-                <Form.Item
-                  label="Model of car"
-                  name="Model"
-                  rules={[
-                    {
-                      required: true,
-                      message: 'Please input your model of car!'
-                    }
-                  ]}>
-                  <Select onChange={modelHandleChange} placeholder="Select a model">
-                    {modelsElements}
-                  </Select>
-                </Form.Item>
-              ) : (
-                <Form.Item label="Model of car" name="Model">
-                  <Select placeholder="Select a model" disabled></Select>
-                </Form.Item>
-              )}
-
-              <Form.Item
-                label="Car VIN"
-                name="carVin"
-                rules={[{ required: true, message: 'Please input your car VIN!' }]}>
-                <Input size="large" placeholder="Enter car VIN" />
-              </Form.Item>
-              <Form.Item
-                label="Year of car manufacture"
-                name="yearOfCarManufacture"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input your year of car manufacture!'
-                  }
-                ]}>
-                <Input size="large" placeholder="Enter model of car" />
-              </Form.Item>
-
-              <Form.Item
-                label="Car mileage"
-                name="carMileage"
-                rules={[{ required: true, message: 'Please input your car mileage!' }]}>
-                <Input size="large" placeholder="Enter car mileage" />
-              </Form.Item>
-
-              <Form.Item>
-                <Button size="large" type="primary" htmlType="submit">
-                  Add car
-                </Button>
-              </Form.Item>
-            </Form>
-          </div>
+    <Modal
+      title="Add new car"
+      getContainer={false}
+      visible={isModalVisible}
+      onCancel={onClose}
+      footer={[
+        <div key="submit" className="modal-btn">
+          <Button form={form} size="large" type="primary" htmlType="submit">
+            Add Car
+          </Button>
         </div>
+      ]}>
+      <div className="modal-form">
+        <Form
+          className="form"
+          name={form}
+          form={form}
+          layout="vertical"
+          autoComplete="off"
+          onFinish={onFinish}>
+          <Form.Item label="Car brand" name="carBrandId" rules={carRules.brand}>
+            <Select onChange={onBrandChange} placeholder="Select a brand">
+              {brandsElements}
+            </Select>
+          </Form.Item>
+          <Form.Item label="Model of car" name="carModelId" rules={carRules.model}>
+            <Select placeholder="Select a model" disabled={isBrandSelected ? false : true}>
+              {modelsElements}
+            </Select>
+          </Form.Item>
+          <Form.Item label="Car VIN" name="vin" rules={carRules.vin}>
+            <Input size="large" placeholder="Enter car VIN" />
+          </Form.Item>
+          <Form.Item label="Year of car manufacture" name="year" rules={carRules.year}>
+            <Input size="large" placeholder="Enter year of car" />
+          </Form.Item>
+
+          <Form.Item label="Car mileage" name="mileage" rules={carRules.mileage}>
+            <Input size="large" placeholder="Enter car mileage" />
+          </Form.Item>
+        </Form>
       </div>
-    </div>
+    </Modal>
   );
 }
 
