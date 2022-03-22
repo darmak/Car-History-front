@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { allCarModels } from './modelsCreator';
+import { getCarModels } from './modelsCreator';
 
 const initialState = {
   models: []
@@ -10,7 +10,7 @@ const modelsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [allCarModels.fulfilled.type]: (state, action) => {
+    [getCarModels.fulfilled.type]: (state, action) => {
       state.models = action.payload;
     }
   }

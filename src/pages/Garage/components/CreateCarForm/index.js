@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Input, Select, Modal } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
-import { userCars } from '../../../../features/carsCreator';
-import { allBrands } from '../../../../features/brandsCreator';
-import { allCarModels } from '../../../../features/modelsCreator';
+import { getUserCars } from '../../../../features/carsCreator';
+import { getAllBrands } from '../../../../features/brandsCreator';
+import { getCarModels } from '../../../../features/modelsCreator';
 import { addNewCar } from '../../../../features/carsCreator';
 import { carRules } from './carFormConstants';
 
@@ -11,7 +11,7 @@ import './index.scss';
 
 const { Option } = Select;
 
-function ModalWin({ isModalVisible, setIsModalVisible }) {
+function CreateCarForm({ isModalVisible, setIsModalVisible }) {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
@@ -21,11 +21,11 @@ function ModalWin({ isModalVisible, setIsModalVisible }) {
   const [isBrandSelected, setIsBrandSelected] = useState(false);
 
   useEffect(() => {
-    dispatch(allBrands());
+    dispatch(getAllBrands());
   }, []);
 
   useEffect(() => {
-    dispatch(allCarModels({ carBrandId: brandValue }));
+    dispatch(getCarModels({ carBrandId: brandValue }));
   }, [brandValue]);
 
   function onBrandChange(value) {
@@ -35,7 +35,7 @@ function ModalWin({ isModalVisible, setIsModalVisible }) {
 
   const onFinish = (value) => {
     dispatch(addNewCar({ ...value, userId: user.id })).then(() => {
-      dispatch(userCars({ userId: user.id }));
+      dispatch(getUserCars({ userId: user.id }));
     });
     setIsModalVisible(false);
     form.resetFields();
@@ -109,4 +109,4 @@ function ModalWin({ isModalVisible, setIsModalVisible }) {
   );
 }
 
-export default ModalWin;
+export default CreateCarForm;

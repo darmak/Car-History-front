@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col } from 'antd';
 import HistoryListItem from './components/HistoryListItem';
-import { carHistories } from '../../../../features/historiesCreator';
+import { getCarHistories } from '../../../../features/historiesCreator';
 import Spinner from '../../../../components/Spinner';
 
 import './index.scss';
@@ -15,7 +15,7 @@ function HistoryList() {
 
   useEffect(() => {
     setLoading(true);
-    dispatch(carHistories({ carId: car.id })).then(() => setLoading(false));
+    dispatch(getCarHistories({ carId: car.id })).then(() => setLoading(false));
   }, []);
 
   const elements = histories.map((item) => {

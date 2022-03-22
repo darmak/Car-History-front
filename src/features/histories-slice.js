@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { carHistories } from './historiesCreator';
+import { getCarHistories } from './historiesCreator';
 
 const initialState = {
   histories: []
@@ -10,7 +10,7 @@ const historiesSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [carHistories.fulfilled.type]: (state, action) => {
+    [getCarHistories.fulfilled.type]: (state, action) => {
       state.histories = action.payload;
     }
   }
