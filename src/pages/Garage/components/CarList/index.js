@@ -17,7 +17,7 @@ function CarList() {
   const elements = cars.map((item) => {
     return <CarCard {...item} key={item.id} />;
   });
-  return <>{loading ? <Spinner /> : elements}</>;
+  return <>{loading ? <Spinner /> : elements.length && elements}</>;
 }
 
 export default CarList;

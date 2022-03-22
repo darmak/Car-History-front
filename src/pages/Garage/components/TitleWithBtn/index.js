@@ -5,7 +5,7 @@ import { PlusOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 
-function GarageTitleWithBtn({ setModalActive }) {
+function GarageTitleWithBtn({ setIsModalVisible }) {
   return (
     <Row className="title-wrapper">
       <Col span={10} offset={7}>
@@ -15,7 +15,7 @@ function GarageTitleWithBtn({ setModalActive }) {
             <Title>Garage</Title>
           </div>
           <div className="title-content-item">
-            <Button onClick={() => setModalActive(true)} type="primary" icon={<PlusOutlined />}>
+            <Button onClick={() => setIsModalVisible(true)} type="primary" icon={<PlusOutlined />}>
               Add new car
             </Button>
           </div>

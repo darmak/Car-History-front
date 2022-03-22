@@ -22,3 +22,13 @@ export const userCars = createAsyncThunk('car/userCars', async ({ userId }) => {
     .catch(() => console.log('Error: did not get user cars'));
   return response;
 });
+
+export const addNewCar = createAsyncThunk('car/addNewCar', async (newCar) => {
+  const response = await axios
+    .post(`${BASE_URL}/cars`, newCar)
+    .then((res) => {
+      return res.data;
+    })
+    .catch(() => console.log('Error: did not add new car'));
+  return response;
+});

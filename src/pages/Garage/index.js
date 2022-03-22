@@ -4,12 +4,12 @@ import ModalWin from './components/CreateCarForm';
 import GarageTitleWithBtn from './components/TitleWithBtn';
 
 function Garage() {
-  const [modalActive, setModalActive] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   return (
     <>
-      <GarageTitleWithBtn setModalActive={setModalActive} />
+      <GarageTitleWithBtn setIsModalVisible={setIsModalVisible} />
       <CarList />
-      <ModalWin active={modalActive} setActive={setModalActive} />
+      <ModalWin isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
     </>
   );
 }
