@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { BASE_URL } from './creatorConstants';
+import process from 'process';
+
+const { REACT_APP_BASE_URL } = process.env;
 
 export const getCarModels = createAsyncThunk('model/allCarModels', async ({ carBrandId }) => {
   return await axios
-    .get(`${BASE_URL}/models`, { params: { carBrandId } })
+    .get(`${REACT_APP_BASE_URL}/models`, { params: { carBrandId } })
     .then((res) => {
       return res.data;
     })
