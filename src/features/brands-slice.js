@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { allBrands } from './brandsCreator';
+import { getAllBrands } from './brandsCreator';
 
 const initialState = {
   brands: []
@@ -10,7 +10,7 @@ const brandsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [allBrands.fulfilled.type]: (state, action) => {
+    [getAllBrands.fulfilled.type]: (state, action) => {
       state.brands = action.payload;
     }
   }

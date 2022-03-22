@@ -27,7 +27,7 @@ function beforeUpload(file) {
 }
 
 function ProfileContent() {
-  const user = useSelector((state) => state.users.user);
+  const user = useSelector((state) => state.auth.user);
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
 

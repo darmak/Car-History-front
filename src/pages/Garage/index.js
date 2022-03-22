@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CarList from './components/CarList';
-import ModalWin from './components/CreateCarForm';
+import CreateCarForm from './components/CreateCarForm';
 import GarageTitleWithBtn from './components/TitleWithBtn';
 
 function Garage() {
@@ -9,7 +9,7 @@ function Garage() {
     <>
       <GarageTitleWithBtn setIsModalVisible={setIsModalVisible} />
       <CarList />
-      <ModalWin isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
+      <CreateCarForm isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
     </>
   );
 }

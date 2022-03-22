@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CarCard from '../../../../components/CarCard';
-import { userCars } from '../../../../features/carsCreator.js';
+import { getUserCars } from '../../../../features/carsCreator.js';
 import Spinner from '../../../../components/Spinner';
 
 function CarList() {
@@ -11,7 +11,7 @@ function CarList() {
   const user = useSelector((state) => state.auth.user);
   useEffect(() => {
     setLoading(true);
-    dispatch(userCars({ userId: user.id })).then(() => setLoading(false));
+    dispatch(getUserCars({ userId: user.id })).then(() => setLoading(false));
   }, []);
 
   const elements = cars.map((item) => {

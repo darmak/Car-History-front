@@ -1,34 +1,30 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-const BASE_URL = 'http://localhost:5000';
+import { BASE_URL } from './creatorConstants';
 
 export const searchCars = createAsyncThunk('car/searchCars', async ({ vin, limit }) => {
-  const response = await axios
+  return await axios
     .get(`${BASE_URL}/cars/search`, { params: { vin, limit } })
     .then((res) => {
       return res.data;
     })
     .catch(() => console.log('Error: did not get car'));
-  return response;
 });
 
-export const userCars = createAsyncThunk('car/userCars', async ({ userId }) => {
-  const response = await axios
+export const getUserCars = createAsyncThunk('car/userCars', async ({ userId }) => {
+  return await axios
     .get(`${BASE_URL}/cars/garage`, { params: { userId } })
     .then((res) => {
       return res.data;
     })
     .catch(() => console.log('Error: did not get user cars'));
-  return response;
 });
 
 export const addNewCar = createAsyncThunk('car/addNewCar', async (newCar) => {
-  const response = await axios
+  return await axios
     .post(`${BASE_URL}/cars`, newCar)
     .then((res) => {
       return res.data;
     })
     .catch(() => console.log('Error: did not add new car'));
-  return response;
 });
