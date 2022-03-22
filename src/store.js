@@ -4,13 +4,15 @@ import carsReducer from './features/cars-slice.js';
 import historiesReducer from './features/histories-slice.js';
 import authReducer from './features/auth-slice.js';
 import brandsReducer from './features/brands-slice.js';
+import modelsReducer from './features/models-slice.js';
 
 export const store = configureStore({
   reducer: {
     cars: carsReducer,
     users: usersReducer,
     histories: historiesReducer,
-    auth: authReducer,
-    brands: brandsReducer
+    brands: brandsReducer,
+    models: modelsReducer,
+    auth: authReducer
   }
 });

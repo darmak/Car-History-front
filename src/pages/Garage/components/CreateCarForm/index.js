@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Typography, Form, Input, Button, Select } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { allBrands } from '../../../../features/brandsCreator';
+import { allCarModels } from '../../../../features/modelsCreator';
 
 import './index.scss';
 
@@ -10,8 +11,10 @@ const { Title } = Typography;
 
 function ModalWin({ active, setActive }) {
   const dispatch = useDispatch();
-  const brands = useSelector((state) => state.brands.brands);
   const user = useSelector((state) => state.auth.user);
+  const brands = useSelector((state) => state.brands.brands);
+  const models = useSelector((state) => state.models.models);
+  const [selectedBrand, setSelectedBrand] = useState(false);
   const [newCar, setNewCar] = useState({
     mileage: '',
     year: 0,
@@ -25,8 +28,18 @@ function ModalWin({ active, setActive }) {
     dispatch(allBrands());
   }, []);
 
+  useEffect(() => {
+    dispatch(allCarModels({ carBrandId: newCar.carBrandId }));
+  }, [newCar.carBrandId]);
+
   function BrandHandleChange(value) {
+    setSelectedBrand(true);
     setNewCar({ ...newCar, carBrandId: value });
+  }
+
+  function modelHandleChange(value) {
+    setSelectedBrand(true);
+    setNewCar({ ...newCar, carModelId: value });
   }
 
   const onFinish = (values) => {
@@ -41,6 +54,14 @@ function ModalWin({ active, setActive }) {
     return (
       <Option key={item.id} value={item.id}>
         {item.brand}
+      </Option>
+    );
+  });
+
+  const modelsElements = models.map((item) => {
+    return (
+      <Option key={item.id} value={item.id}>
+        {item.model}
       </Option>
     );
   });
@@ -73,21 +94,26 @@ function ModalWin({ active, setActive }) {
                   {brandsElements}
                 </Select>
               </Form.Item>
-              <Form.Item
-                label="Model of car"
-                name="Model"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input your model of car!'
-                  }
-                ]}>
-                <Select placeholder="Select a model">
-                  <Option value="jack">Jack</Option>
-                  <Option value="lucy">Lucy</Option>
-                  <Option value="tom">Tom</Option>
-                </Select>
-              </Form.Item>
+              {selectedBrand ? (
+                <Form.Item
+                  label="Model of car"
+                  name="Model"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input your model of car!'
+                    }
+                  ]}>
+                  <Select onChange={modelHandleChange} placeholder="Select a model">
+                    {modelsElements}
+                  </Select>
+                </Form.Item>
+              ) : (
+                <Form.Item label="Model of car" name="Model">
+                  <Select placeholder="Select a model" disabled></Select>
+                </Form.Item>
+              )}
+
               <Form.Item
                 label="Car VIN"
                 name="carVin"
