@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import HistorySvg from '../../assets/logo/History.svg';
 import CarSvg from '../../assets/logo/Car.svg';
 import { logout } from '../../features/auth-slice';
+import { userRoles } from '../../constans/common.js';
 
 import './index.scss';
 
@@ -12,6 +13,7 @@ function PageHeader() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuthorized = useSelector((state) => state.auth.isAuthorized);
+  const user = useSelector((state) => state.auth.user);
 
   const logOutHandler = () => {
     dispatch(logout());
@@ -44,6 +46,13 @@ function PageHeader() {
               </Menu.Item>
               <Menu.Item key="4">
                 <Link to="/profile">Profile</Link>
+              </Menu.Item>
+            </>
+          ) : null}
+          {isAuthorized && user.user_role === userRoles.admin ? (
+            <>
+              <Menu.Item key="5">
+                <Link to="/users">Users</Link>
               </Menu.Item>
             </>
           ) : null}
