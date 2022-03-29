@@ -7,6 +7,7 @@ import Authorization from '../pages/Authorization/index.js';
 import Garage from '../pages/Garage/index.js';
 import AboutUs from '../pages/AboutUs/index.js';
 import Profile from '../pages/Profile/index.js';
+import Users from '../pages/Users/index.js';
 
 function Router() {
   return (
@@ -18,6 +19,7 @@ function Router() {
       <Route path="/garage" element={<Garage />} />
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/users" element={<Users />} />
     </Routes>
   );
 }
