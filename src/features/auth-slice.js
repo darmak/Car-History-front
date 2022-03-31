@@ -1,10 +1,13 @@
+import jwt_decode from 'jwt-decode';
+
 import { createSlice } from '@reduxjs/toolkit';
 import { register, login } from './authCreactor';
 
+const token = localStorage.getItem('token');
 const initialState = {
-  user: {},
-  isAuthorized: false,
-  token: null
+  user: token ? jwt_decode(token) : {},
+  isAuthorized: token ? true : false,
+  token: token ? token : null
 };
 
 const authSlice = createSlice({
