@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../libs/axios.js';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import process from 'process';
 

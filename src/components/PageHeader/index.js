@@ -49,7 +49,7 @@ function PageHeader() {
               </Menu.Item>
             </>
           ) : null}
-          {isAuthorized && user.user_role === userRoles.admin ? (
+          {isAuthorized && user.role === userRoles.admin ? (
             <>
               <Menu.Item key="5">
                 <Link to="/users">Users</Link>
