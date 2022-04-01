@@ -1,5 +1,5 @@
 export const userRoles = {
-  admin: 'ADMIN',
-  standart: 'USER',
-  crs: 'CRS'
+  admin: 'admin',
+  standart: 'user',
+  crs: 'crs'
 };

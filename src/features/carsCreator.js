@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../libs/axios.js';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import process from 'process';
 
@@ -18,10 +18,6 @@ export const searchCars = createAsyncThunk('car/searchCars', async ({ vin, limit
 export const getUserCars = createAsyncThunk('car/userCars', async ({ userId }) => {
   return await axios
     .get(`${REACT_APP_BASE_URL}/cars/garage`, {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: `JWT ${localStorage.getItem('token')}`
-      },
       params: { userId }
     })
     .then((res) => {
@@ -32,12 +28,7 @@ export const getUserCars = createAsyncThunk('car/userCars', async ({ userId }) =
 
 export const addNewCar = createAsyncThunk('car/addNewCar', async (newCar) => {
   return await axios
-    .post(`${REACT_APP_BASE_URL}/cars`, newCar, {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: `JWT ${localStorage.getItem('token')}`
-      }
-    })
+    .post(`${REACT_APP_BASE_URL}/cars`, newCar, {})
     .then((res) => {
       return res.data;
     })

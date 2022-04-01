@@ -4,20 +4,35 @@ import { createSlice } from '@reduxjs/toolkit';
 import { register, login } from './authCreactor';
 
 const token = localStorage.getItem('token');
-const initialState = {
-  user: token ? jwt_decode(token) : {},
-  isAuthorized: token ? true : false,
-  token: token ? token : null
+
+let initialState = {
+  user: {},
+  isAuthorized: false,
+  token: null
 };
+
+if (token) {
+  try {
+    const decode = jwt_decode(token);
+    initialState = {
+      user: decode,
+      isAuthorized: true,
+      token: token
+    };
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
     logout(state) {
-      state.token = null;
+      state.user = {};
       state.isAuthorized = false;
-      localStorage.setItem('token', null);
+      state.token = null;
+      localStorage.removeItem('token');
     }
   },
   extraReducers: {
