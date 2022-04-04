@@ -8,11 +8,11 @@ import modelsReducer from './features/models-slice.js';
 
 export const store = configureStore({
   reducer: {
-    cars: carsReducer,
     users: usersReducer,
+    auth: authReducer,
+    cars: carsReducer,
     histories: historiesReducer,
     brands: brandsReducer,
-    models: modelsReducer,
-    auth: authReducer
+    models: modelsReducer
   }
 });

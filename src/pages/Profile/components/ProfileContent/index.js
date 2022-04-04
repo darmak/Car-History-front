@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col, Button, Typography, Upload, message } from 'antd';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
+
+import { getUser } from '../../../../features/usersCreator.js';
 
 import './index.scss';
 
@@ -27,9 +30,17 @@ function beforeUpload(file) {
 }
 
 function ProfileContent() {
-  const user = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
+  // const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state) => state.users.user);
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const { id } = jwt_decode(token);
+    dispatch(getUser({ id }));
+  }, []);
 
   const handleChange = (info) => {
     if (info.file.status === 'uploading') {
