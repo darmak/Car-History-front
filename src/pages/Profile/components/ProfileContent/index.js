@@ -3,7 +3,6 @@ import { Row, Col, Button, Typography, Upload, message } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import jwt_decode from 'jwt-decode';
 
 import { getUser } from '../../../../features/usersCreator.js';
 
@@ -31,15 +30,13 @@ function beforeUpload(file) {
 
 function ProfileContent() {
   const dispatch = useDispatch();
-  // const user = useSelector((state) => state.auth.user);
+  const userId = useSelector((state) => state.auth.user.id);
   const user = useSelector((state) => state.users.user);
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const { id } = jwt_decode(token);
-    dispatch(getUser({ id }));
+    dispatch(getUser({ id: userId }));
   }, []);
 
   const handleChange = (info) => {
