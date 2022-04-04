@@ -4,8 +4,8 @@ import process from 'process';
 
 const { REACT_APP_BASE_URL } = process.env;
 
-export const getUser = createAsyncThunk('user/getUser', async (id) => {
-  return axios.get(`${REACT_APP_BASE_URL}/user/${id}`).then((res) => {
+export const getUser = createAsyncThunk('user/getUser', async ({ id }) => {
+  return axios.get(`${REACT_APP_BASE_URL}/users/${id}`).then((res) => {
     return res.data;
   });
 });
