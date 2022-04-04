@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Row, Col, Menu, Button } from 'antd';
@@ -5,7 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import HistorySvg from '../../assets/logo/History.svg';
 import CarSvg from '../../assets/logo/Car.svg';
 import { logout } from '../../features/auth-slice';
-import { userRoles } from '../../constans/common.js';
+import { userRoles } from '../../constans/userRoles.js';
+import { permissions } from '../../constans/rolePermission.js';
 
 import './index.scss';
 
@@ -41,9 +43,11 @@ function PageHeader() {
           </Menu.Item>
           {isAuthorized ? (
             <>
-              <Menu.Item key="3">
-                <Link to="/garage">Garage</Link>
-              </Menu.Item>
+              {user.permissions.includes(permissions.users.read) && user.role === userRoles.standart ? (
+                <Menu.Item key="3">
+                  <Link to="/garage">Garage</Link>
+                </Menu.Item>
+              ) : null}
               <Menu.Item key="4">
                 <Link to="/profile">Profile</Link>
               </Menu.Item>
