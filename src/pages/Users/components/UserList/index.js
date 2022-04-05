@@ -21,7 +21,7 @@ function UserList() {
   }, []);
 
   const elements = users.map((item) => {
-    return <UserListCard {...item} key={item.id} />;
+    return <UserListCard {...item} id={item.id} key={item.id} />;
   });
   return (
     <div className="user-list-wrapper">

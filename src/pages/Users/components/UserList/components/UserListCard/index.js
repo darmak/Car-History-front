@@ -1,12 +1,22 @@
 import React from 'react';
 import { Button, Typography } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { useDispatch } from 'react-redux';
+import { getAllUsers, deleteUser } from '../../../../../../features/usersCreator';
 
 import './index.scss';
 
 const { Title } = Typography;
 
-function UserListCard({ name, email }) {
+function UserListCard({ name, email, id }) {
+  const dispatch = useDispatch();
+
+  const onDeleteUser = (id) => {
+    dispatch(deleteUser({ id })).then(() => {
+      dispatch(getAllUsers());
+    });
+  };
+
   return (
     <>
       <div className="user-list-content__card">
@@ -23,7 +33,13 @@ function UserListCard({ name, email }) {
           </div>
           <div className="user-list-btns">
             <Button type="primary" ghost icon={<EditOutlined />} />
-            <Button className="delete-btn" type="primary" danger icon={<DeleteOutlined />} />
+            <Button
+              onClick={() => onDeleteUser(id)}
+              className="delete-btn"
+              type="primary"
+              danger
+              icon={<DeleteOutlined />}
+            />
           </div>
         </div>
       </div>
