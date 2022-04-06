@@ -6,7 +6,7 @@ import { register, login } from './authCreactor';
 const token = localStorage.getItem('token');
 
 let initialState = {
-  user: {},
+  user: null,
   isAuthorized: false,
   token: null
 };
@@ -29,7 +29,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout(state) {
-      state.user = {};
+      state.user = null;
       state.isAuthorized = false;
       state.token = null;
       localStorage.removeItem('token');
@@ -44,6 +44,12 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       localStorage.setItem('token', action.payload.token);
       state.isAuthorized = true;
+    },
+    [login.rejected.type]: (state) => {
+      state.user = null;
+      state.token = null;
+      localStorage.removeItem('token');
+      state.isAuthorized = false;
     }
   }
 });

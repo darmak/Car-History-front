@@ -1,37 +1,16 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-
-import Home from '../pages/Home/index.js';
-import CarHistory from '../pages/CarHistory/index.js';
-import Registration from '../pages/Registration/index.js';
-import Authorization from '../pages/Authorization/index.js';
-import Garage from '../pages/Garage/index.js';
-import AboutUs from '../pages/AboutUs/index.js';
-import Profile from '../pages/Profile/index.js';
-import Users from '../pages/Users/index.js';
-// import { userRoles } from '../constans/userRoles.js';
-// import { permissions } from '../constans/rolePermission.js';
+import { getUserRoutes } from './routes';
+import { useSelector } from 'react-redux';
 
 function Router() {
-  // const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state) => state.auth.user);
+  const userRoutes = getUserRoutes(user);
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/car-history" element={<CarHistory />} />
-      <Route path="/registration" element={<Registration />} />
-      <Route path="/authorization" element={<Authorization />} />
-      <Route path="/garage" element={<Garage/>}/>
-      {/* {!!user &&
-      user.permissions.includes(permissions.users.read) &&
-      user.role === userRoles.standart ? (
-          <Route path="/garage" children={user.permissions.includes(permissions.users.read) &&
-						user.role === userRoles.standart ? <Garage/> : null} />
-        ) : null} */}
-      <Route path="/about-us" element={<AboutUs />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/users" element={<Users />} />
+      {userRoutes.map(({ path, element }) => (
+        <Route path={path} element={element} key={path} />
+      ))}
     </Routes>
   );
 }
