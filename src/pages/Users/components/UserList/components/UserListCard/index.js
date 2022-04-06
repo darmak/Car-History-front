@@ -8,7 +8,7 @@ import './index.scss';
 
 const { Title } = Typography;
 
-function UserListCard({ name, email, id }) {
+function UserListCard({ name, email, role, id }) {
   const dispatch = useDispatch();
 
   const onDeleteUser = (id) => {
@@ -29,6 +29,13 @@ function UserListCard({ name, email, id }) {
           <div>
             <Title className="user-list-title" level={5}>
               {email}
+            </Title>
+          </div>
+        </div>
+        <div className="user-list-content-title user-list-content-right-wrapper">
+          <div>
+            <Title className="user-list-title" level={5}>
+              {role}
             </Title>
           </div>
           <div className="user-list-btns">

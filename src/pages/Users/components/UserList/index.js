@@ -43,6 +43,13 @@ function UserList() {
                   </Title>
                 </div>
               </div>
+              <div className="user-list-header-right user-list-header__item">
+                <div className="user-list-header__mail">
+                  <Title className="user-list-title" level={5}>
+                    Role
+                  </Title>
+                </div>
+              </div>
             </div>
             <div className="user-list-content">{loading ? <Spinner /> : elements}</div>
           </div>
