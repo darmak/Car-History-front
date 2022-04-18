@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col, Typography } from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
+
 import UserListCard from './components/UserListCard';
+import Spinner from '../../../../components/Spinner';
+import { getAllUsers } from '../../../../features/usersCreator.js';
 
 import './index.scss';
 
 const { Title } = Typography;
 
 function UserList() {
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.users.users);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    dispatch(getAllUsers()).then(() => setLoading(false));
+  }, []);
+
+  const elements = users.map((item) => {
+    return <UserListCard {...item} id={item.id} key={item.id} />;
+  });
   return (
     <div className="user-list-wrapper">
       <Row>
@@ -27,11 +43,15 @@ function UserList() {
                   </Title>
                 </div>
               </div>
+              <div className="user-list-header-right user-list-header__item">
+                <div className="user-list-header__mail">
+                  <Title className="user-list-title" level={5}>
+                    Role
+                  </Title>
+                </div>
+              </div>
             </div>
-            <div className="user-list-content">
-              <UserListCard />
-              <UserListCard />
-            </div>
+            <div className="user-list-content">{loading ? <Spinner /> : elements}</div>
           </div>
         </Col>
       </Row>

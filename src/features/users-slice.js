@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getUser } from './usersCreator';
+import { getUser, getAllUsers } from './usersCreator';
 
 const initialState = {
-  user: {}
+  user: {},
+  users: []
 };
 
 const usersSlice = createSlice({
@@ -12,6 +13,9 @@ const usersSlice = createSlice({
   extraReducers: {
     [getUser.fulfilled.type]: (state, action) => {
       state.user = action.payload;
+    },
+    [getAllUsers.fulfilled.type]: (state, action) => {
+      state.users = action.payload;
     }
   }
 });
