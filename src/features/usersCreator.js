@@ -16,6 +16,12 @@ export const getAllUsers = createAsyncThunk('user/getAllUsers', async () => {
   });
 });
 
+export const editUser = createAsyncThunk('user/editUser', async ({ id, name, email }) => {
+  return axios.put(`${REACT_APP_BASE_URL}/users/${id}`, { name, email }).then((res) => {
+    return res.data;
+  });
+});
+
 export const deleteUser = createAsyncThunk('user/deleteUser', async ({ id }) => {
   return axios.delete(`${REACT_APP_BASE_URL}/users/${id}`).then((res) => {
     return res.data;
