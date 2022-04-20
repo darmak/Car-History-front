@@ -1,10 +1,18 @@
-.history-header-wrapper {
-    background-color: #fff;
-    text-align: center;
-    padding-top: 50px;
-}
-
 .history-header {
-    display: flex;
-    justify-content: center;
+    &-wrapper {
+      background-color: #fff;
+      padding-top: 50px;
+    }
+    &-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &-item {
+        width: calc(100%/3);
+        text-align: center;
+        &:last-child {
+          text-align:right;
+      }
+    }
 }

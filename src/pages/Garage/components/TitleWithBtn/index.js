@@ -12,7 +12,7 @@ function GarageTitleWithBtn({ setIsModalVisible }) {
         <div className="title-content">
           <div className="title-content-item" />
           <div className="title-content-item">
-            <Title>Garage</Title>
+            <Title className="title-content_text">Garage</Title>
           </div>
           <div className="title-content-item">
             <Button onClick={() => setIsModalVisible(true)} type="primary" icon={<PlusOutlined />}>
