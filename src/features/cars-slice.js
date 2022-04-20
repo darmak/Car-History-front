@@ -13,6 +13,9 @@ const carsSlice = createSlice({
   reducers: {
     setSelectedCar(state, action) {
       state.selectedCar = action.payload;
+    },
+    clearSearchCars(state) {
+      state.carsSearch = [];
     }
   },
   extraReducers: {
@@ -25,5 +28,5 @@ const carsSlice = createSlice({
   }
 });
 
-export const { setSelectedCar } = carsSlice.actions;
+export const { setSelectedCar, clearSearchCars } = carsSlice.actions;
 export default carsSlice.reducer;

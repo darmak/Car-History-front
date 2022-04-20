@@ -5,6 +5,8 @@ import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
 import { getUser } from '../../../../features/usersCreator.js';
+import { userRoles } from '../../../../constans/userRoles.js';
+import { permissions } from '../../../../constans/rolePermission.js';
 
 import './index.scss';
 
@@ -32,6 +34,7 @@ function ProfileContent() {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.auth.user.id);
   const user = useSelector((state) => state.users.user);
+  const userPermissions = useSelector((state) => state.auth.user.permissions);
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
 
@@ -96,13 +99,15 @@ function ProfileContent() {
           </Title>
         </Col>
       </Row>
-      <div className="profile-btn-wrapper">
-        <Link to="/garage">
-          <Button type="primary" icon={<PlusOutlined />}>
-            Add new car
-          </Button>
-        </Link>
-      </div>
+      {user.role === userRoles.standart && userPermissions.includes(permissions.cars.create) ? (
+        <div className="profile-btn-wrapper">
+          <Link to="/garage">
+            <Button type="primary" icon={<PlusOutlined />}>
+              Add new car
+            </Button>
+          </Link>
+        </div>
+      ) : null}
     </>
   );
 }

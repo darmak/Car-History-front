@@ -13,7 +13,7 @@ function HistoryListItem({ author, mileage, date, description }) {
       <div className="history-list-item-data">
         <span>{textDate}</span>
       </div>
-      <Card title={`${author}`}>
+      <Card className="car-card" title={`${author}`}>
         <div className="history-list-item">
           <div className="history-list-item-description">
             <div>
