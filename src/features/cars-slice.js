@@ -14,7 +14,7 @@ const carsSlice = createSlice({
     setSelectedCar(state, action) {
       state.selectedCar = action.payload;
     },
-    cleaningSearchCars(state) {
+    clearSearchCars(state) {
       state.carsSearch = [];
     }
   },
@@ -28,5 +28,5 @@ const carsSlice = createSlice({
   }
 });
 
-export const { setSelectedCar, cleaningSearchCars } = carsSlice.actions;
+export const { setSelectedCar, clearSearchCars } = carsSlice.actions;
 export default carsSlice.reducer;
