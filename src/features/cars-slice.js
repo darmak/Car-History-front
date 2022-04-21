@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { searchCars, getUserCars } from './carsCreator';
+import { searchCars, getUserCars, getCar } from './carsCreator';
 
 const initialState = {
   cars: [],
@@ -11,9 +11,6 @@ const carsSlice = createSlice({
   name: 'car',
   initialState,
   reducers: {
-    setSelectedCar(state, action) {
-      state.selectedCar = action.payload;
-    },
     clearSearchCars(state) {
       state.carsSearch = [];
     }
@@ -24,9 +21,12 @@ const carsSlice = createSlice({
     },
     [getUserCars.fulfilled.type]: (state, action) => {
       state.cars = action.payload;
+    },
+    [getCar.fulfilled.type]: (state, action) => {
+      state.selectedCar = action.payload;
     }
   }
 });
 
-export const { setSelectedCar, clearSearchCars } = carsSlice.actions;
+export const { clearSearchCars } = carsSlice.actions;
 export default carsSlice.reducer;

@@ -1,22 +1,15 @@
 import React from 'react';
 import { Card, Row, Col, Typography, Image } from 'antd';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setSelectedCar } from '../../features/cars-slice';
 
 import './index.scss';
 
 const { Title } = Typography;
 
 function CarCard({ year, vin, mileage, carBrand, carModel, id }) {
-  const dispatch = useDispatch();
   const { brand } = carBrand;
   const { model } = carModel;
   const cardTitle = `${brand} ${model},${year},${vin}`;
-
-  const linkHandler = () => {
-    dispatch(setSelectedCar({ year, vin, mileage, brand, model, id }));
-  };
   return (
     <Row className="car-card">
       <Col span={10} offset={7}>
@@ -56,9 +49,7 @@ function CarCard({ year, vin, mileage, carBrand, carModel, id }) {
               </div>
             </div>
             <div className="car-card-info">
-              <Link to="/car-history" onClick={linkHandler}>
-                More...
-              </Link>
+              <Link to={`/car-history/${id}`}>More...</Link>
             </div>
           </div>
         </Card>

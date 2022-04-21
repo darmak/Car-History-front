@@ -32,7 +32,7 @@ export const routes = [
     title: 'Users'
   },
   { path: '/about-us', element: <AboutUs />, title: 'About Us' },
-  { path: '/car-history', element: <CarHistory />, title: 'Car History', hideInMenu: true },
+  { path: '/car-history/:carId', element: <CarHistory />, title: 'Car History', hideInMenu: true },
   { path: '/registration', element: <Registration />, title: 'Registration', hideInMenu: true },
   { path: '/authorization', element: <Authorization />, title: 'Authorization', hideInMenu: true }
 ];

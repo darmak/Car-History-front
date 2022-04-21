@@ -5,8 +5,9 @@ import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
 import { getUser } from '../../../../features/usersCreator.js';
-import { userRoles } from '../../../../constans/userRoles.js';
 import { permissions } from '../../../../constans/rolePermission.js';
+import { userRoles } from '../../../../constans/userRoles.js';
+import HasPermissions from '../../../../helpers/HasPermissions.js';
 
 import './index.scss';
 
@@ -99,7 +100,11 @@ function ProfileContent() {
           </Title>
         </Col>
       </Row>
-      {user.role === userRoles.standart && userPermissions.includes(permissions.cars.create) ? (
+      <HasPermissions
+        role={user.role}
+        userPermissions={userPermissions}
+        requiredPermission={permissions.cars.create}
+        requiredRole={userRoles.standart}>
         <div className="profile-btn-wrapper">
           <Link to="/garage">
             <Button type="primary" icon={<PlusOutlined />}>
@@ -107,7 +112,7 @@ function ProfileContent() {
             </Button>
           </Link>
         </div>
-      ) : null}
+      </HasPermissions>
     </>
   );
 }

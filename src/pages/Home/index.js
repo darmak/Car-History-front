@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import SearchPanel from './components/SearchPanel';
 import Counters from './components/Counters';
 import CarCard from '../../components/CarCard';
 import { searchCars } from '../../features/carsCreator.js';
 import Spinner from '../../components/Spinner';
+import { clearSearchCars } from '../../features/cars-slice';
 
 function Home() {
   const dispatch = useDispatch();
@@ -18,6 +20,10 @@ function Home() {
       );
     }
   };
+
+  useEffect(() => {
+    dispatch(clearSearchCars());
+  }, []);
 
   const elements = cars.map((item) => {
     return <CarCard {...item} key={item.id} />;
