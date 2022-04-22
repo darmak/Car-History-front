@@ -15,6 +15,15 @@ export const searchCars = createAsyncThunk('car/searchCars', async ({ vin, limit
     .catch(() => console.log('Error: did not get car'));
 });
 
+export const getCar = createAsyncThunk('car/getCar', async ({ carId }) => {
+  return await axios
+    .get(`${REACT_APP_BASE_URL}/cars/garage/${carId}`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch(() => console.log('Error: did not get user car'));
+});
+
 export const getUserCars = createAsyncThunk('car/userCars', async ({ userId }) => {
   return await axios
     .get(`${REACT_APP_BASE_URL}/cars/garage`, {

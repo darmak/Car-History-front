@@ -1,0 +1,13 @@
+.modal {
+	&-form-history {
+		display: flex;
+		justify-content: center;
+		padding: 0 30px;
+	}
+	&-history-btn {
+		text-align: center;
+	}
+	&-date-picker {
+		width: 100%;
+	}
+}

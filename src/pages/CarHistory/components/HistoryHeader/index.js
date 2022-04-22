@@ -4,6 +4,7 @@ import { Typography, Row, Col, Button } from 'antd';
 import { useSelector } from 'react-redux';
 import { PlusOutlined } from '@ant-design/icons';
 
+import HasPermissions from '../../../../helpers/HasPermissions';
 import { userRoles } from '../../../../constans/userRoles';
 import { permissions } from '../../../../constans/rolePermission';
 
@@ -11,10 +12,11 @@ import './index.scss';
 
 const { Title } = Typography;
 
-function HistoryHeader() {
-  const car = useSelector((state) => state.cars.selectedCar);
-  const user = useSelector((state) => state.users.user);
-  const userWithPermission = useSelector((state) => state.auth.user);
+function HistoryHeader({ setIsModalVisible }) {
+  const carBrand = useSelector((state) => state.cars.selectedCar.carBrand?.brand);
+  const carModel = useSelector((state) => state.cars.selectedCar.carModel?.model);
+  const userRole = useSelector((state) => state.auth.user?.role);
+  const userPermissions = useSelector((state) => state.auth.user?.permissions);
   return (
     <div className="history-header-wrapper">
       <Row className="history-header">
@@ -23,17 +25,22 @@ function HistoryHeader() {
             <div className="history-header-item" />
             <div className="history-header-item">
               <Title>
-                History {car.brand} {car.model}
+                History {carBrand} {carModel}
               </Title>
             </div>
             <div className="history-header-item">
-              {userWithPermission &&
-              user.role === userRoles.css &&
-              userWithPermission.permissions.includes(permissions.histories.create) ? (
-                <Button type="primary" icon={<PlusOutlined />}>
+              <HasPermissions
+                role={userRole}
+                userPermissions={userPermissions}
+                requiredPermission={permissions.histories.create}
+                requiredRole={userRoles.css}>
+                <Button
+                  onClick={() => setIsModalVisible(true)}
+                  type="primary"
+                  icon={<PlusOutlined />}>
                   Add new history
                 </Button>
-              ) : null}
+              </HasPermissions>
             </div>
           </div>
         </Col>

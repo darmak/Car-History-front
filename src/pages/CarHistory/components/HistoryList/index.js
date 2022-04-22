@@ -7,15 +7,14 @@ import Spinner from '../../../../components/Spinner';
 
 import './index.scss';
 
-function HistoryList() {
+function HistoryList({ carId }) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const car = useSelector((state) => state.cars.selectedCar);
   const histories = useSelector((state) => state.histories.histories);
 
   useEffect(() => {
     setLoading(true);
-    dispatch(getCarHistories({ carId: car.id })).then(() => setLoading(false));
+    dispatch(getCarHistories({ carId })).then(() => setLoading(false));
   }, []);
 
   const elements = histories.map((item) => {
