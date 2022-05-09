@@ -16,6 +16,12 @@ export const getAllUsers = createAsyncThunk('user/getAllUsers', async () => {
   });
 });
 
+export const addNewCss = createAsyncThunk('user/addNewCss', async (userData) => {
+  return axios.post(`${REACT_APP_BASE_URL}/registration`, userData).then((res) => {
+    return res.data;
+  });
+});
+
 export const editUser = createAsyncThunk('user/editUser', async ({ id, name, email }) => {
   return axios.put(`${REACT_APP_BASE_URL}/users/${id}`, { name, email }).then((res) => {
     return res.data;

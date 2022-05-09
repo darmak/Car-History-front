@@ -6,7 +6,8 @@ export const permissions = {
     create: 'registration_create'
   },
   users: {
-    read: 'users_read'
+    read: 'users_read',
+    create: 'users_create'
   },
   cars: {
     read: 'cars_read',
