@@ -9,8 +9,7 @@ import { permissions } from '../../constans/rolePermission';
 import { userRoles } from '../../constans/userRoles';
 
 function Garage() {
-  const user = useSelector((state) => state.users?.user);
-  const userPermissions = useSelector((state) => state.auth.user?.permissions);
+  const user = useSelector((state) => state.auth.user);
   const [isModalVisible, setIsModalVisible] = useState(false);
   return (
     <>
@@ -18,7 +17,7 @@ function Garage() {
       <CarList />
       <HasPermissions
         role={user.role}
-        userPermissions={userPermissions}
+        userPermissions={user.permissions}
         requiredPermission={permissions.cars.create}
         requiredRole={userRoles.standart}>
         <CreateCarForm isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
