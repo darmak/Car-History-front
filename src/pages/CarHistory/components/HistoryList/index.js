@@ -7,7 +7,7 @@ import Spinner from '../../../../components/Spinner';
 
 import './index.scss';
 
-function HistoryList({ carId }) {
+function HistoryList({ setIsModalVisible, setIsEditing, carId }) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const histories = useSelector((state) => state.histories.histories);
@@ -18,7 +18,15 @@ function HistoryList({ carId }) {
   }, []);
 
   const elements = histories.map((item) => {
-    return <HistoryListItem {...item} key={item.id} />;
+    return (
+      <HistoryListItem
+        setIsModalVisible={setIsModalVisible}
+        setIsEditing={setIsEditing}
+        {...item}
+        key={item.id}
+        carId={carId}
+      />
+    );
   });
   return (
     <Row className="history-list">

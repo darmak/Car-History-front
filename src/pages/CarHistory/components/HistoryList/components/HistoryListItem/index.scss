@@ -51,3 +51,13 @@
 .car-card {
   width: 100%;
 }
+
+.header-btns {
+    display: flex;
+    justify-content: center;
+    &__delete {
+        button {
+            margin-left: 10px;
+        }
+    }
+}

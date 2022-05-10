@@ -17,7 +17,8 @@ export const permissions = {
   },
   histories: {
     read: 'histories_read',
-    create: 'histories_create'
+    create: 'histories_create',
+    edit: 'histories_edit'
   },
   brands: {
     read: 'brands_read'

@@ -11,6 +11,7 @@ function CarHistory() {
   const { carId } = useParams();
   const dispatch = useDispatch();
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     dispatch(getCar({ carId }));
@@ -19,10 +20,16 @@ function CarHistory() {
   return (
     <>
       <HistoryHeader setIsModalVisible={setIsModalVisible} />
-      <HistoryList carId={carId} />
+      <HistoryList
+        setIsModalVisible={setIsModalVisible}
+        setIsEditing={setIsEditing}
+        carId={carId}
+      />
       <CreateHistoryForm
         isModalVisible={isModalVisible}
         setIsModalVisible={setIsModalVisible}
+        isEditing={isEditing}
+        setIsEditing={setIsEditing}
         carId={carId}
       />
     </>

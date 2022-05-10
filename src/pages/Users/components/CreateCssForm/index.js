@@ -48,28 +48,28 @@ function CreateCssForm({ isModalVisible, setIsModalVisible }) {
           <Form.Item
             label="Name"
             name="name"
-            rules={[{ required: true, message: 'Please input css name!' }]}>
+            rules={[{ required: true, message: 'Please input CSS name!' }]}>
             <Input size="large" placeholder="Enter name" />
           </Form.Item>
 
           <Form.Item
             label="Email"
             name="email"
-            rules={[{ required: true, message: 'Please input css email!' }]}>
+            rules={[{ required: true, message: 'Please input CSS email!' }]}>
             <Input size="large" placeholder="Enter email" />
           </Form.Item>
 
           <Form.Item
             label="Password"
             name="password"
-            rules={[{ required: true, message: 'Please input css password!' }]}>
+            rules={[{ required: true, message: 'Please input CSS password!' }]}>
             <Input.Password size="large" placeholder="Enter password" />
           </Form.Item>
 
           <Form.Item
             label="Repeat password"
             name="rePassword"
-            rules={[{ required: true, message: 'Please input css password!' }]}>
+            rules={[{ required: true, message: 'Please input CSS password!' }]}>
             <Input.Password size="large" placeholder="Repeat password" />
           </Form.Item>
         </Form>

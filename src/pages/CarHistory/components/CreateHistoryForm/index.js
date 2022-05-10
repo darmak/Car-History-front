@@ -13,7 +13,6 @@ function CreateHistoryForm({ isModalVisible, setIsModalVisible, carId }) {
   const user = useSelector((state) => state.auth.user);
 
   const onFinish = (value) => {
-    console.log(value);
     dispatch(addNewHistory({ ...value, author: user.name, carId })).then(() => {
       dispatch(getCarHistories({ carId }));
     });
